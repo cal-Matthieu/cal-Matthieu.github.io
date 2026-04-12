@@ -230,6 +230,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ========== CONSOLE INFO ==========
 
-console.log('%c👋 Bienvenue sur mon CV!', 'font-size: 20px; font-weight: bold; color: #667eea;');
-console.log('%cSite développé avec ❤️ par Matthieu Calesse', 'font-size: 14px; color: #764ba2;');
-console.log('%c🔗 GitHub: https://github.com/cal-Matthieu', 'font-size: 12px; color: #6c757d;');
+console.log('%cBienvenue sur mon CV!', 'font-size: 20px; font-weight: bold; color: #667eea;');
+console.log('%cSite développé par Matthieu Calesse', 'font-size: 14px; color: #764ba2;');
+console.log('%cGitHub: https://github.com/cal-Matthieu', 'font-size: 12px; color: #6c757d;');
