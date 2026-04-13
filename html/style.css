@@ -333,6 +333,11 @@ h3 {
   border: 1px solid var(--light-grey);
 }
 
+.experience--learning{
+    border: 2px dashed var(--main-blue);
+    background: linear-gradient(135deg, var(--bg-card) 0%, rgba(102, 126, 234, 0.03) 100%);
+}
+
 .experience-card:hover,
 .project-card:hover {
   transform: translateY(-8px);
