@@ -424,6 +424,12 @@ h3 {
   margin-right: 8px;
 }
 
+.competence-block--learning {
+    border: 2px dashed var(--main-blue);
+    background: linear-gradient(135deg, var(--bg-card) 0%, rgba(102, 126, 234, 0.03) 100%);
+}
+
+
 /* Contact */
 .contact-info {
   display: grid;
