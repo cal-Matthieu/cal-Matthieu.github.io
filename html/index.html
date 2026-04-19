@@ -89,7 +89,7 @@ Ce CV numérique met en avant mon parcours, mes réalisations et les compétence
          <article class="experience-card animate-on-scroll experience--learning">
           <h3>Stage Validation Logiciel et support Client</h3>
           <p class="company">
-            <a href="https://www.mapap.fr/">MAPAP</a>
+            <a href="https://www.mapap.fr/" target="_blank" class="btn-company"><i class="fas fa-building"></i> MAPAP</a>
           </p>
           <p class="date"><time datetime="2021-06">Avril – Juin 2026</time></p>
           <p class="description">
@@ -98,12 +98,12 @@ Ce CV numérique met en avant mon parcours, mes réalisations et les compétence
           <p class="competences"><strong>Compétences acquises :</strong> travail en équipe, recherche et partage d'information technique, rédaction de 
           documents techniques</p>
           <p class="outils"><strong>Outils utilisés :</strong><span>Magsiwin</span><span>HFSQL</span><span>Odoo</span></p>
-          <a class="btn btn-primary" href="lien-rapport.pdf" target="_blank">Rapport de stage</a>
+          <a class="btn-project btn-project--disabled" aria-disabled="true" title="Stage en cours — rapport à venir"><i class="fas fa-file-alt"></i> Rapport de stage (à venir)</a>
         </article>
         <article class="experience-card animate-on-scroll">
           <h3>Équipier polyvalent</h3>
           <p class="company">
-            <a href="https://www.mcdonalds.fr/restaurants/mcdonalds-aire-sur-la-lys/528">McDonald's</a>
+            <a href="https://www.mcdonalds.fr/restaurants/mcdonalds-aire-sur-la-lys/528" target="_blank" class="btn-company"><i class="fas fa-building"></i> McDonald's</a>
           </p>
           <p class="date"><time datetime="2025-07">Juillet – Août 2025</time></p>
           <p class="description">
@@ -116,7 +116,7 @@ Ce CV numérique met en avant mon parcours, mes réalisations et les compétence
         <article class="experience-card animate-on-scroll">
           <h3>Stage découverte industrie</h3>
           <p class="company">
-            <a href="https://www.aperam.com/fr/about-us/plants/isbergues/">APERAM</a>
+            <a href="https://www.aperam.com/fr/about-us/plants/isbergues/" target="_blank" class="btn-company"><i class="fas fa-industry"></i> APERAM</a>
           </p>
           <p class="date"><time datetime="2022-06">Juin – Juillet 2022</time></p>
           <p class="description">
@@ -129,7 +129,7 @@ Ce CV numérique met en avant mon parcours, mes réalisations et les compétence
         <article class="experience-card animate-on-scroll">
           <h3>Stage découverte kinésithérapie</h3>
           <p class="company">
-            <a href="https://www.pagesjaunes.fr/pros/07994507">Cabinet de kinésithérapie</a>
+            <a href="https://www.pagesjaunes.fr/pros/07994507" target="_blank" class="btn-company"><i class="fas fa-briefcase-medical"></i> Cabinet de kinésithérapie</a>
           </p>
           <p class="date"><time datetime="2021-06">Juin – Juillet 2021</time></p>
           <p class="description">
@@ -156,6 +156,7 @@ Ce CV numérique met en avant mon parcours, mes réalisations et les compétence
           </p>
           <p class="competences"><strong>Compétences acquises :</strong> Programmation orientée objet, création
             d'interface graphique, algorithmique</p>
+          <a class="btn-project btn-project--outline" href="https://github.com/cal-Matthieu/Chesschool" target="_blank"><i class="fab fa-github"></i> GitHub</a>
         </article>
         <article class="project-card animate-on-scroll">
           <h3>Jeu Tetris (Méthode Agile)</h3>
@@ -167,6 +168,7 @@ Ce CV numérique met en avant mon parcours, mes réalisations et les compétence
           </p>
           <p class="competences"><strong>Compétences acquises :</strong> Travail en équipe agile, versioning avec Git
           </p>
+          <a class="btn-project btn-project--outline" href="https://github.com/cal-Matthieu/groupe-3-main" target="_blank"><i class="fab fa-github"></i> GitHub</a>
         </article>
         <article class="project-card animate-on-scroll">
           <h3>Jeu Labyrinthe avec interface</h3>
@@ -182,18 +184,22 @@ Ce CV numérique met en avant mon parcours, mes réalisations et les compétence
         <article class="project-card animate-on-scroll">
           <h3>SAE JS</h3>
           <p class="tech"><i class="fas fa-code"></i> <strong>Technologies :</strong> TypeScript, NodeJS</p>
-          <a href="https://cal-matthieu.github.io/sae_js/">Aperçu du projet</a>
           <p class="date"><time datetime="2025-10">Mars 2026</time> (BUT Informatique)</p>
           <p class="description">Description projet SAE API</p>
           <p class="competences"><strong>Compétences acquises :</strong> a ajouter les compétences acquises</p>
+          <a class="btn-project" href="https://cal-matthieu.github.io/sae_js/" target="_blank"><i class="fas fa-eye"></i> Aperçu du projet</a>
+          <a class="btn-project btn-project--outline" href="https://github.com/cal-Matthieu/sae_js" target="_blank"><i class="fab fa-github"></i> GitHub</a>
         </article>
         <article class="project-card animate-on-scroll">
-          <h3>SAE API</h3>
-          <p class="tech"><i class="fas fa-code"></i> <strong>Technologies :</strong> java, SQL, Rest</p>
-          <a href="">Aperçu du projet (en déploiement)</a>
-          <p class="date"><time datetime="2025-10">Mars 2026</time> (BUT Informatique)</p>
-          <p class="description">Description projet SAE API</p>
-          <p class="competences"><strong>Compétences acquises :</strong> a ajouter les compétences acquises</p>
+          <h3>EcoDrop — API REST</h3>
+          <p class="tech"><i class="fas fa-code"></i> <strong>Technologies :</strong> Java, PostgreSQL, Jakarta Servlet, Tomcat, Jackson, Bruno</p>
+          <p class="date"><time datetime="2026-03">Mars 2026</time> (BUT Informatique)</p>
+          <p class="description">
+            API REST en architecture couches (Servlets → DAO → JDBC → PostgreSQL) pour la gestion écologique de déchets. Authentification par token, CRUD complet, leaderboard et alertes de surcharge.
+          </p>
+          <p class="competences"><strong>Compétences acquises :</strong> Architecture REST, pattern DAO, modélisation SQL avancée, authentification par token, tests API</p>
+          <a class="btn-project" href="projet-ecodrop.html"><i class="fas fa-eye"></i> Voir le projet</a>
+          <a class="btn-project btn-project--outline" href="https://github.com/cal-Matthieu/SAE2.01" target="_blank"><i class="fab fa-github"></i> GitHub</a>
         </article>
       </div>
     </section>

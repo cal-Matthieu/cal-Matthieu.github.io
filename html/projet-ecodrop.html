@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoDrop — API REST | Matthieu Calesse</title>
+  <meta name="description" content="Présentation du projet EcoDrop : API REST en Java pour la gestion écologique de déchets. Architecture en couches, authentification par token, leaderboard.">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- En-tête avec navigation -->
+  <header>
+    <nav>
+      <div class="logo">Matthieu CALESSE</div>
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-hidden="true">
+      <label for="menu-toggle" class="hamburger" aria-label="Menu de navigation" role="button" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </label>
+      <ul id="nav-menu" class="nav-menu" role="navigation" aria-label="Navigation principale">
+        <li><a href="index.html#accueil">Accueil</a></li>
+        <li><a href="index.html#formations">Formations</a></li>
+        <li><a href="index.html#experiences">Expériences</a></li>
+        <li><a href="index.html#projets" class="active">Projets</a></li>
+        <li><a href="index.html#competences">Compétences</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero du projet -->
+    <section class="section fade-in project-hero">
+      <a href="index.html#projets" class="btn-back"><i class="fas fa-arrow-left"></i> Retour aux projets</a>
+      <h1>♻️ EcoDrop — API REST</h1>
+      <p class="project-subtitle">SAE 2.01 · BUT Informatique 2ᵉ année · Université de Lille · Mars 2026</p>
+      <div class="project-tags">
+        <span class="tag">Java 17</span>
+        <span class="tag">Jakarta Servlet</span>
+        <span class="tag">Tomcat 10</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">Jackson</span>
+        <span class="tag">Bruno</span>
+      </div>
+    </section>
+
+    <!-- Présentation -->
+    <section class="section">
+      <h2>Présentation</h2>
+      <p>
+        <strong>EcoDrop</strong> est une API REST complète modélisant un système de gestion écologique de déchets.
+        Les utilisateurs peuvent enregistrer des dépôts de déchets dans des points de collecte et gagner des points
+        en fonction du type et du poids des déchets déposés. Le système inclut un leaderboard, un contrôle d'accès
+        par rôles et des alertes de surcharge automatiques.
+      </p>
+      <div class="features-grid">
+        <div class="feature-item">
+          <i class="fas fa-lock"></i>
+          <h3>Authentification</h3>
+          <p>Token Base64 avec gestion des rôles USER / ADMIN</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-database"></i>
+          <h3>CRUD complet</h3>
+          <p>4 ressources : déchets, points de collecte, dépôts, utilisateurs</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-trophy"></i>
+          <h3>Leaderboard</h3>
+          <p>Classement par score pondéré (poids × points par kilo)</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-exclamation-triangle"></i>
+          <h3>Alertes surcharge</h3>
+          <p>Détection automatique des points remplis à plus de 80%</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture -->
+    <section class="section">
+      <h2>Architecture technique</h2>
+      <p>Le projet suit une architecture en couches stricte, assurant une séparation claire des responsabilités :</p>
+      <div class="architecture-layers">
+        <div class="arch-layer">
+          <div class="arch-icon"><i class="fas fa-globe"></i></div>
+          <div class="arch-content">
+            <h3>Client HTTP</h3>
+            <p>Bruno / curl / frontend</p>
+          </div>
+        </div>
+        <div class="arch-arrow"><i class="fas fa-arrow-down"></i></div>
+        <div class="arch-layer">
+          <div class="arch-icon"><i class="fas fa-shield-alt"></i></div>
+          <div class="arch-content">
+            <h3>Authentification</h3>
+            <p>authent.java · VerifToken.java — Génération et vérification des tokens Base64</p>
+          </div>
+        </div>
+        <div class="arch-arrow"><i class="fas fa-arrow-down"></i></div>
+        <div class="arch-layer">
+          <div class="arch-icon"><i class="fas fa-server"></i></div>
+          <div class="arch-content">
+            <h3>Contrôleurs REST (Servlets)</h3>
+            <p>DepositAPI · DechetRestAPI · CollectionPointRestAPI · UsersAPI</p>
+          </div>
+        </div>
+        <div class="arch-arrow"><i class="fas fa-arrow-down"></i></div>
+        <div class="arch-layer">
+          <div class="arch-icon"><i class="fas fa-cogs"></i></div>
+          <div class="arch-content">
+            <h3>Couche DAO</h3>
+            <p>DepositDAO · DechetDAO · CollectionPointDAO · UsersDAO</p>
+          </div>
+        </div>
+        <div class="arch-arrow"><i class="fas fa-arrow-down"></i></div>
+        <div class="arch-layer">
+          <div class="arch-icon"><i class="fas fa-plug"></i></div>
+          <div class="arch-content">
+            <h3>DataSource JDBC</h3>
+            <p>DS.java — Connexion poolée vers la base de données</p>
+          </div>
+        </div>
+        <div class="arch-arrow"><i class="fas fa-arrow-down"></i></div>
+        <div class="arch-layer arch-layer--db">
+          <div class="arch-icon"><i class="fas fa-database"></i></div>
+          <div class="arch-content">
+            <h3>PostgreSQL</h3>
+            <p>4 tables : users · wastetype · collectionpoint · deposit</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Schéma BDD -->
+    <section class="section">
+      <h2>Modèle de données</h2>
+      <p>Le schéma relationnel est composé de 4 tables reliées par des clés étrangères. La table <code>deposit</code> fait le lien entre les utilisateurs, les types de déchets et les points de collecte.</p>
+      <div class="schema-container">
+        <img src="images/ecodrop-schema.png" alt="Schéma relationnel de la base de données EcoDrop" class="schema-img">
+      </div>
+      <div class="tables-grid">
+        <div class="table-card">
+          <h3><i class="fas fa-user"></i> users</h3>
+          <p>Comptes utilisateurs avec login, password et rôle (USER/ADMIN)</p>
+        </div>
+        <div class="table-card">
+          <h3><i class="fas fa-trash"></i> wastetype</h3>
+          <p>Types de déchets avec nom et points par kilo</p>
+        </div>
+        <div class="table-card">
+          <h3><i class="fas fa-map-marker-alt"></i> collectionpoint</h3>
+          <p>Points de collecte avec adresse et capacité maximale</p>
+        </div>
+        <div class="table-card">
+          <h3><i class="fas fa-box"></i> deposit</h3>
+          <p>Dépôts effectués : liaison utilisateur × déchet × point, poids et date</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Endpoints API -->
+    <section class="section">
+      <h2>Endpoints de l'API</h2>
+      <p>Contexte : <code>/context_ecodrop</code></p>
+
+      <h3><i class="fas fa-lock"></i> Authentification</h3>
+      <div class="table-responsive">
+        <table class="api-table">
+          <thead>
+            <tr><th>Méthode</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="method get">GET</span></td><td><code>/auth/token?login=X&password=Y</code></td><td>Non</td><td>Génère un token Base64</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3><i class="fas fa-trash"></i> Déchets</h3>
+      <div class="table-responsive">
+        <table class="api-table">
+          <thead>
+            <tr><th>Méthode</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="method get">GET</span></td><td><code>/dechets/</code></td><td>Non</td><td>Liste tous les types de déchets</td></tr>
+            <tr><td><span class="method get">GET</span></td><td><code>/dechets/{id}</code></td><td>Non</td><td>Récupère un déchet par ID</td></tr>
+            <tr><td><span class="method post">POST</span></td><td><code>/dechets/</code></td><td>User</td><td>Crée un nouveau type de déchet</td></tr>
+            <tr><td><span class="method put">PUT</span></td><td><code>/dechets/{id}</code></td><td>User</td><td>Remplace un déchet existant</td></tr>
+            <tr><td><span class="method delete">DELETE</span></td><td><code>/dechets/{id}</code></td><td>Admin</td><td>Supprime un type de déchet</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3><i class="fas fa-map-marker-alt"></i> Points de collecte</h3>
+      <div class="table-responsive">
+        <table class="api-table">
+          <thead>
+            <tr><th>Méthode</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="method get">GET</span></td><td><code>/points/</code></td><td>Non</td><td>Liste tous les points</td></tr>
+            <tr><td><span class="method get">GET</span></td><td><code>/points/{id}</code></td><td>Non</td><td>Détails d'un point</td></tr>
+            <tr><td><span class="method get">GET</span></td><td><code>/points/{id}/status</code></td><td>Non</td><td>Taux de remplissage + alerte</td></tr>
+            <tr><td><span class="method get">GET</span></td><td><code>/points/overloaded</code></td><td>Admin</td><td>Points surchargés (&gt;80%)</td></tr>
+            <tr><td><span class="method put">PUT</span></td><td><code>/points/{id}</code></td><td>User</td><td>Mise à jour complète</td></tr>
+            <tr><td><span class="method patch">PATCH</span></td><td><code>/points/{id}</code></td><td>User</td><td>Mise à jour partielle</td></tr>
+            <tr><td><span class="method delete">DELETE</span></td><td><code>/points/{id}/clear</code></td><td>Admin</td><td>Vider un point</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3><i class="fas fa-box"></i> Dépôts</h3>
+      <div class="table-responsive">
+        <table class="api-table">
+          <thead>
+            <tr><th>Méthode</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="method get">GET</span></td><td><code>/deposit/</code></td><td>Non</td><td>Historique des dépôts</td></tr>
+            <tr><td><span class="method get">GET</span></td><td><code>/deposit/{id}</code></td><td>Non</td><td>Détails d'un dépôt</td></tr>
+            <tr><td><span class="method post">POST</span></td><td><code>/deposit/</code></td><td>User</td><td>Enregistrer un dépôt</td></tr>
+            <tr><td><span class="method put">PUT</span></td><td><code>/deposit/{id}</code></td><td>Non</td><td>Mise à jour complète</td></tr>
+            <tr><td><span class="method patch">PATCH</span></td><td><code>/deposit/{id}</code></td><td>User</td><td>Mise à jour partielle</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3><i class="fas fa-users"></i> Utilisateurs</h3>
+      <div class="table-responsive">
+        <table class="api-table">
+          <thead>
+            <tr><th>Méthode</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="method get">GET</span></td><td><code>/users/</code></td><td>Non</td><td>Liste tous les utilisateurs</td></tr>
+            <tr><td><span class="method get">GET</span></td><td><code>/users/leaderboard</code></td><td>Non</td><td>🏆 Classement des scores</td></tr>
+            <tr><td><span class="method put">PUT</span></td><td><code>/users/{id}</code></td><td>Non</td><td>Mise à jour complète</td></tr>
+            <tr><td><span class="method patch">PATCH</span></td><td><code>/users/{id}</code></td><td>User</td><td>Mise à jour partielle</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Compétences acquises -->
+    <section class="section">
+      <h2>Compétences développées</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <i class="fas fa-sitemap"></i>
+          <h3>Architecture REST</h3>
+          <p>Conception d'une API respectant les conventions HTTP (GET, POST, PUT, PATCH, DELETE)</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-layer-group"></i>
+          <h3>Pattern DAO</h3>
+          <p>Découplage logique métier / accès aux données avec le pattern Data Access Object</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-database"></i>
+          <h3>SQL avancé</h3>
+          <p>Jointures, agrégations, sous-requêtes et modélisation relationnelle avec PostgreSQL</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-key"></i>
+          <h3>Authentification</h3>
+          <p>Système d'authentification par token Basic Auth Base64 avec contrôle d'accès RBAC</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-exchange-alt"></i>
+          <h3>Sérialisation JSON</h3>
+          <p>Conversion objet ↔ JSON avec Jackson (ObjectMapper, annotations)</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-vial"></i>
+          <h3>Tests API</h3>
+          <p>Couverture exhaustive des endpoints avec Bruno (succès + erreurs)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lien GitHub -->
+    <section class="section" style="text-align: center; border-bottom: none;">
+      <a href="https://github.com/cal-Matthieu/SAE2.01" target="_blank" class="btn-project btn-project--outline">
+        <i class="fab fa-github"></i> Voir le code source sur GitHub
+      </a>
+    </section>
+  </main>
+
+  <!-- Pied de page -->
+  <footer>
+    <p>&copy; 2026 Matthieu Calesse | <a href="https://www.linkedin.com/in/matthieu-calesse/"
+        target="_blank">LinkedIn</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
