@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[MAQUETTE B — Light Minimal] Matthieu Calesse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f8f9fa;
+      --accent: #2563eb;
+      --accent-light: #eff6ff;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --ease: 0.15s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 0 32px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color var(--ease);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--accent); }
+
+    /* ── WRAPPER ── */
+    .wrapper {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 110px 24px 80px;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      margin-bottom: 80px;
+      padding-bottom: 80px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero-name {
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      font-weight: 700;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+
+    .hero-sub strong { color: var(--text); font-weight: 600; }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      padding: 11px 22px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity var(--ease);
+    }
+
+    .btn-primary:hover { opacity: 0.88; }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 11px 22px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: border-color var(--ease), background var(--ease);
+    }
+
+    .btn-secondary:hover { border-color: var(--accent); background: var(--accent-light); }
+
+    /* ── SECTION ── */
+    section { margin-bottom: 72px; scroll-margin-top: 80px; }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text);
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── TIMELINE ── */
+    .timeline { display: flex; flex-direction: column; gap: 20px; }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .tl-date {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding-top: 2px;
+      text-align: right;
+    }
+
+    .tl-body {}
+
+    .tl-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .tl-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .tl-desc { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* ── EXP / PROJECT CARDS ── */
+    .card-list { display: flex; flex-direction: column; gap: 2px; }
+
+    .card {
+      padding: 20px 20px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      transition: all var(--ease);
+    }
+
+    .card:hover {
+      background: var(--bg-alt);
+      border-color: var(--border);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .card-sub {
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 2px;
+    }
+
+    .card-date {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+
+    .card-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      line-height: 1.7;
+    }
+
+    .card-links { display: flex; gap: 14px; }
+    .card-links a {
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 500;
+    }
+    .card-links a:hover { text-decoration: underline; }
+
+    /* ── TAGS ── */
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+
+    .tag {
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 0.71rem;
+      font-weight: 500;
+    }
+
+    /* ── SKILLS ── */
+    .skill-group { margin-bottom: 24px; }
+
+    .skill-group-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    /* ── CONTACT ── */
+    .contact-links { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color var(--ease);
+    }
+
+    .contact-link:hover { color: var(--accent); }
+    .contact-link i { width: 16px; text-align: center; color: var(--accent); }
+
+    /* ── BADGE ── */
+    .maquette-badge {
+      position: fixed;
+      bottom: 20px; right: 20px;
+      background: var(--accent);
+      color: #fff;
+      padding: 5px 13px;
+      border-radius: 20px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      z-index: 999;
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .tl-item { grid-template-columns: 1fr; gap: 4px; }
+      .tl-date { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="maquette-badge">✦ Maquette B — Light</div>
+
+  <nav>
+    <a href="#hero" class="nav-name">Matthieu Calesse</a>
+    <ul class="nav-links">
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#formations">Formations</a></li>
+      <li><a href="#experiences">Expériences</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="wrapper">
+
+    <!-- Hero -->
+    <section id="hero">
+      <span class="hero-tag">Développeur web · Étudiant BUT Info</span>
+      <h1 class="hero-name">Matthieu<br>Calesse.</h1>
+      <p class="hero-sub">Je conçois des applications web modernes et robustes. <strong>2ème année de BUT Informatique</strong> à l'IUT de Lille — développeur web junior en quête d'un stage ou d'une alternance.</p>
+      <div class="hero-actions">
+        <a href="#projets" class="btn-primary"><i class="fas fa-folder-open"></i> Voir mes projets</a>
+        <a href="doc/cv.pdf" download class="btn-secondary"><i class="fas fa-download"></i> Télécharger le CV</a>
+        <a href="https://github.com/cal-Matthieu" target="_blank" class="btn-secondary"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    </section>
+
+    <!-- À propos -->
+    <section id="about">
+      <h2 class="section-title">À propos</h2>
+      <p style="color:var(--text-muted);line-height:1.8;margin-bottom:14px">Étudiant en <strong style="color:var(--text)">BUT Informatique</strong> à l'IUT de Lille, je développe une expertise en développement web et logiciel avec un intérêt marqué pour l'intelligence artificielle et les données.</p>
+      <p style="color:var(--text-muted);line-height:1.8">Au fil de mes projets académiques, j'ai conçu des jeux multijoueur en temps réel, des API REST, et des applications Java — en équipe comme en solo. Curieux et rigoureux, je construis mes compétences à travers des projets concrets.</p>
+    </section>
+
+    <!-- Formations -->
+    <section id="formations">
+      <h2 class="section-title">Formations</h2>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date">2024 — 2027</div>
+          <div class="tl-body">
+            <div class="tl-title">BUT Informatique</div>
+            <div class="tl-sub">IUT de Lille, Villeneuve-d'Ascq · 2ème année</div>
+            <div class="tl-desc">Développement d'applications, POO, bases de données, réseaux, méthodes agiles.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2021</div>
+          <div class="tl-body">
+            <div class="tl-title">Baccalauréat Général</div>
+            <div class="tl-sub">Lycée Anatole France, Lillers</div>
+            <div class="tl-desc">Spécialités Mathématiques · NSI</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2020</div>
+          <div class="tl-body">
+            <div class="tl-title">Brevet des Collèges</div>
+            <div class="tl-sub">Collège Sainte-Marie, Aire-sur-la-Lys</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expériences -->
+    <section id="experiences">
+      <h2 class="section-title">Expériences</h2>
+      <div class="card-list">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Stage — Validation Logiciel & Support Client</div>
+              <div class="card-sub">MAPAP</div>
+            </div>
+            <span class="card-date">Avr – Juin 2026</span>
+          </div>
+          <p class="card-desc">Analyse, conception technique, tests de validation et maintenance d'une solution informatique. Rédaction de documents techniques.</p>
+          <div class="tags"><span class="tag">Magsiwin</span><span class="tag">HFSQL</span><span class="tag">Odoo</span></div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Équipier polyvalent</div>
+              <div class="card-sub">McDonald's</div>
+            </div>
+            <span class="card-date">Juil – Août 2025</span>
+          </div>
+          <p class="card-desc">Service client dans un environnement dynamique. Gestion du stress et adaptabilité.</p>
+          <div class="tags"><span class="tag">Service client</span><span class="tag">Travail en équipe</span></div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Stage découverte industrie</div>
+              <div class="card-sub">APERAM</div>
+            </div>
+            <span class="card-date">Juin – Juil 2022</span>
+          </div>
+          <p class="card-desc">Découverte des processus industriels dans une usine de sidérurgie.</p>
+          <div class="tags"><span class="tag">Processus industriels</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projets -->
+    <section id="projets">
+      <h2 class="section-title">Projets</h2>
+      <div class="card-list">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">SAE JS — Shoot'em up multijoueur temps réel</div>
+              <div class="card-sub">TypeScript · Node.js · Socket.io · Mars 2026</div>
+            </div>
+          </div>
+          <p class="card-desc">Jeu multijoueur (1–4 joueurs) avec synchronisation temps réel via Socket.io. Contrôles fluides, ennemis dynamiques, classement JSON.</p>
+          <div class="tags" style="margin-bottom:12px"><span class="tag">TypeScript</span><span class="tag">Multijoueur</span><span class="tag">Architecture client–serveur</span><span class="tag">Temps réel</span><span class="tag">Programmation réseau</span></div>
+          <div class="card-links">
+            <a href="https://cal-matthieu.github.io/sae_js/" target="_blank"><i class="fas fa-external-link-alt"></i> Live</a>
+            <a href="https://github.com/cal-Matthieu/sae_js" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">EcoDrop — API REST</div>
+              <div class="card-sub">Java · PostgreSQL · Jakarta Servlet · Mars 2026</div>
+            </div>
+          </div>
+          <p class="card-desc">API REST en architecture couches pour la gestion écologique de déchets. Auth token, CRUD complet, leaderboard.</p>
+          <div class="tags" style="margin-bottom:12px"><span class="tag">Java</span><span class="tag">PostgreSQL</span><span class="tag">API REST</span><span class="tag">Pattern DAO</span></div>
+          <div class="card-links">
+            <a href="projet-ecodrop.html"><i class="fas fa-external-link-alt"></i> Détail</a>
+            <a href="https://github.com/cal-Matthieu/SAE2.01" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Jeu d'échecs avec IA</div>
+              <div class="card-sub">Java · MVC · 2025</div>
+            </div>
+          </div>
+          <p class="card-desc">Interface graphique MVC avec gestion complète des règles et IA simple.</p>
+          <div class="tags" style="margin-bottom:12px"><span class="tag">Java</span><span class="tag">MVC</span><span class="tag">Algorithmique</span></div>
+          <div class="card-links">
+            <a href="https://github.com/cal-Matthieu/Chesschool" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Tetris — Méthode Agile</div>
+              <div class="card-sub">Java · Agile · Git · 2025</div>
+            </div>
+          </div>
+          <p class="card-desc">Développement en équipe avec gestion de projet agile et documentation complète.</p>
+          <div class="tags" style="margin-bottom:12px"><span class="tag">Java</span><span class="tag">Agile</span><span class="tag">Git</span></div>
+          <div class="card-links">
+            <a href="https://github.com/cal-Matthieu/groupe-3-main" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Compétences -->
+    <section id="competences">
+      <h2 class="section-title">Compétences</h2>
+      <div class="skill-group">
+        <div class="skill-group-title">Langages</div>
+        <div class="tags"><span class="tag">TypeScript</span><span class="tag">JavaScript</span><span class="tag">Java</span><span class="tag">Python</span><span class="tag">HTML / CSS</span><span class="tag">SQL</span><span class="tag">C#</span><span class="tag">PHP</span></div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Architecture & Dev</div>
+        <div class="tags"><span class="tag">Architecture logicielle</span><span class="tag">API REST</span><span class="tag">Client–serveur</span><span class="tag">Programmation réseau</span><span class="tag">Temps réel</span><span class="tag">Async</span><span class="tag">POO</span><span class="tag">Pattern DAO</span></div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Bases de données & Réseaux</div>
+        <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">JDBC</span><span class="tag">TCP/IP</span><span class="tag">WebSocket</span></div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Outils & Méthodes</div>
+        <div class="tags"><span class="tag">Git</span><span class="tag">Agile / Scrum</span><span class="tag">Maven</span><span class="tag">Tomcat</span></div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">En cours</div>
+        <div class="tags"><span class="tag">Next.js</span><span class="tag">WLangage</span></div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <p style="color:var(--text-muted);margin-bottom:24px;line-height:1.8">Ouvert aux opportunités de stage, d'alternance ou de projets freelance.</p>
+      <div class="contact-links">
+        <a href="mailto:calmatthieu@yahoo.com" class="contact-link"><i class="fas fa-envelope"></i> calmatthieu@yahoo.com</a>
+        <a href="https://www.linkedin.com/in/matthieu-calesse/" target="_blank" class="contact-link"><i class="fab fa-linkedin"></i> linkedin.com/in/matthieu-calesse</a>
+        <a href="https://github.com/cal-Matthieu" target="_blank" class="contact-link"><i class="fab fa-github"></i> github.com/cal-Matthieu</a>
+        <span class="contact-link"><i class="fas fa-map-marker-alt"></i> Villeneuve-d'Ascq, 59 · Permis B</span>
+      </div>
+      <a href="doc/cv.pdf" download class="btn-primary"><i class="fas fa-download"></i> Télécharger le CV</a>
+    </section>
+
+  </div>
+
+  <script>
+    const links = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('section[id]');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => {
+            l.classList.remove('active');
+            if (l.getAttribute('href') === '#' + e.target.id) l.classList.add('active');
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => observer.observe(s));
+  </script>
+</body>
+</html>
