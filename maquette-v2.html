@@ -6,7 +6,7 @@
   <title>[MAQUETTE V2] Matthieu Calesse — Développeur Full Stack</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -382,7 +382,7 @@
     /* ── ABOUT ── */
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 260px;
+      grid-template-columns: 1fr 290px;
       gap: 48px;
       align-items: start;
     }
@@ -430,7 +430,8 @@
 
     .code-slides-wrap {
       position: relative;
-      min-height: 268px;
+      height: 300px;
+      overflow: hidden;
     }
 
     .code-slide {
@@ -451,10 +452,10 @@
     .code-line {
       display: flex;
       gap: 10px;
-      margin-bottom: 5px;
-      font-family: 'Courier New', monospace;
-      font-size: 0.71rem;
-      line-height: 1.5;
+      margin-bottom: 4px;
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      font-size: 0.7rem;
+      line-height: 1.55;
     }
 
     .ln  { color: #334155; min-width: 14px; user-select: none; }
@@ -936,52 +937,52 @@
 
           <div class="code-slides-wrap">
 
-            <!-- Slide 1 : TypeScript interface -->
+            <!-- Slide 1 : TypeScript typé -->
             <div class="code-slide active">
               <div class="code-line"><span class="ln">1</span><span class="cm">// matthieu.ts</span></div>
               <div class="code-line"><span class="ln">2</span></div>
-              <div class="code-line"><span class="ln">3</span><span class="kw">interface </span><span class="tp">Developer</span><span class="pu"> {</span></div>
-              <div class="code-line"><span class="ln">4</span>&nbsp; <span class="fn">name</span><span class="pu">:</span> <span class="tp">string</span></div>
-              <div class="code-line"><span class="ln">5</span>&nbsp; <span class="fn">type</span><span class="pu">:</span> <span class="str">"Full Stack"</span></div>
+              <div class="code-line"><span class="ln">3</span><span class="kw">const </span><span class="vr">dev</span><span class="pu">: {</span></div>
+              <div class="code-line"><span class="ln">4</span>&nbsp; <span class="fn">name</span><span class="pu">:</span>  <span class="tp">string</span></div>
+              <div class="code-line"><span class="ln">5</span>&nbsp; <span class="fn">type</span><span class="pu">:</span>  <span class="str">"Full Stack"</span></div>
               <div class="code-line"><span class="ln">6</span>&nbsp; <span class="fn">front</span><span class="pu">:</span> <span class="tp">string</span><span class="pu">[]</span></div>
               <div class="code-line"><span class="ln">7</span>&nbsp; <span class="fn">back</span><span class="pu">:</span>  <span class="tp">string</span><span class="pu">[]</span></div>
-              <div class="code-line"><span class="ln">8</span><span class="pu">}</span></div>
-              <div class="code-line"><span class="ln">9</span></div>
-              <div class="code-line"><span class="ln">10</span><span class="kw">const </span><span class="vr">dev</span><span class="pu">:</span> <span class="tp">Developer</span><span class="pu"> = {</span></div>
-              <div class="code-line"><span class="ln">11</span>&nbsp; <span class="fn">name</span><span class="pu">:</span>  <span class="str">"Calesse"</span><span class="pu">,</span></div>
-              <div class="code-line"><span class="ln">12</span>&nbsp; <span class="fn">type</span><span class="pu">:</span>  <span class="str">"Full Stack"</span><span class="pu">,</span></div>
-              <div class="code-line"><span class="ln">13</span>&nbsp; <span class="fn">front</span><span class="pu">:</span> <span class="pu">[</span><span class="str">"HTML/CSS"</span><span class="pu">,</span> <span class="str">"JS/TS"</span><span class="pu">],</span></div>
-              <div class="code-line"><span class="ln">14</span>&nbsp; <span class="fn">back</span><span class="pu">:</span>  <span class="pu">[</span><span class="str">"Java"</span><span class="pu">,</span> <span class="str">"Node.js"</span><span class="pu">,</span> <span class="str">"SQL"</span><span class="pu">]</span></div>
-              <div class="code-line"><span class="ln">15</span><span class="pu">}</span></div>
-              <div class="code-line"><span class="ln">16</span></div>
-              <div class="code-line"><span class="ln">17</span><span class="cm">// Open to work </span><span class="ok">✓</span></div>
+              <div class="code-line"><span class="ln">8</span><span class="pu">} = {</span></div>
+              <div class="code-line"><span class="ln">9</span>&nbsp; <span class="fn">name</span><span class="pu">:</span>  <span class="str">"Calesse"</span><span class="pu">,</span></div>
+              <div class="code-line"><span class="ln">10</span>&nbsp; <span class="fn">type</span><span class="pu">:</span>  <span class="str">"Full Stack"</span><span class="pu">,</span></div>
+              <div class="code-line"><span class="ln">11</span>&nbsp; <span class="fn">front</span><span class="pu">:</span> <span class="pu">[</span><span class="str">"HTML/CSS"</span><span class="pu">,</span> <span class="str">"JS/TS"</span><span class="pu">],</span></div>
+              <div class="code-line"><span class="ln">12</span>&nbsp; <span class="fn">back</span><span class="pu">:</span>  <span class="pu">[</span><span class="str">"Java"</span><span class="pu">,</span> <span class="str">"Node.js"</span><span class="pu">]</span></div>
+              <div class="code-line"><span class="ln">13</span><span class="pu">}</span></div>
+              <div class="code-line"><span class="ln">14</span></div>
+              <div class="code-line"><span class="ln">15</span><span class="cm">// Open to work </span><span class="ok">✓</span></div>
             </div>
 
             <!-- Slide 2 : Objet front/back -->
             <div class="code-slide">
-              <div class="code-line"><span class="ln">1</span><span class="kw">const </span><span class="vr">dev</span><span class="pu"> = {</span></div>
-              <div class="code-line"><span class="ln">2</span>&nbsp; <span class="fn">name</span><span class="pu">:</span>   <span class="str">"Matthieu Calesse"</span><span class="pu">,</span></div>
-              <div class="code-line"><span class="ln">3</span>&nbsp; <span class="fn">role</span><span class="pu">:</span>   <span class="str">"Full Stack Dev"</span><span class="pu">,</span></div>
-              <div class="code-line"><span class="ln">4</span>&nbsp; <span class="fn">front</span><span class="pu">:</span>  <span class="pu">[</span><span class="str">"HTML"</span><span class="pu">,</span> <span class="str">"CSS"</span><span class="pu">,</span> <span class="str">"JS/TS"</span><span class="pu">],</span></div>
-              <div class="code-line"><span class="ln">5</span>&nbsp; <span class="fn">back</span><span class="pu">:</span>   <span class="pu">[</span><span class="str">"Java"</span><span class="pu">,</span> <span class="str">"Node.js"</span><span class="pu">],</span></div>
-              <div class="code-line"><span class="ln">6</span>&nbsp; <span class="fn">db</span><span class="pu">:</span>     <span class="pu">[</span><span class="str">"PostgreSQL"</span><span class="pu">,</span> <span class="str">"HFSQL"</span><span class="pu">],</span></div>
-              <div class="code-line"><span class="ln">7</span>&nbsp; <span class="fn">status</span><span class="pu">:</span> <span class="str">"open to work"</span></div>
-              <div class="code-line"><span class="ln">8</span><span class="pu">}</span></div>
-              <div class="code-line"><span class="ln">9</span></div>
-              <div class="code-line"><span class="ln">10</span><span class="cm">// Let's build something.</span></div>
+              <div class="code-line"><span class="ln">1</span><span class="cm">// developer.js</span></div>
+              <div class="code-line"><span class="ln">2</span></div>
+              <div class="code-line"><span class="ln">3</span><span class="kw">const </span><span class="vr">dev</span><span class="pu"> = {</span></div>
+              <div class="code-line"><span class="ln">4</span>&nbsp; <span class="fn">name</span><span class="pu">:</span>   <span class="str">"Matthieu Calesse"</span><span class="pu">,</span></div>
+              <div class="code-line"><span class="ln">5</span>&nbsp; <span class="fn">role</span><span class="pu">:</span>   <span class="str">"Full Stack Dev"</span><span class="pu">,</span></div>
+              <div class="code-line"><span class="ln">6</span>&nbsp; <span class="fn">front</span><span class="pu">:</span>  <span class="pu">[</span><span class="str">"HTML"</span><span class="pu">,</span> <span class="str">"CSS"</span><span class="pu">,</span> <span class="str">"TS"</span><span class="pu">],</span></div>
+              <div class="code-line"><span class="ln">7</span>&nbsp; <span class="fn">back</span><span class="pu">:</span>   <span class="pu">[</span><span class="str">"Java"</span><span class="pu">,</span> <span class="str">"Node.js"</span><span class="pu">],</span></div>
+              <div class="code-line"><span class="ln">8</span>&nbsp; <span class="fn">db</span><span class="pu">:</span>     <span class="pu">[</span><span class="str">"PostgreSQL"</span><span class="pu">,</span> <span class="str">"HFSQL"</span><span class="pu">],</span></div>
+              <div class="code-line"><span class="ln">9</span>&nbsp; <span class="fn">status</span><span class="pu">:</span> <span class="str">"open to work"</span></div>
+              <div class="code-line"><span class="ln">10</span><span class="pu">}</span></div>
+              <div class="code-line"><span class="ln">11</span></div>
+              <div class="code-line"><span class="ln">12</span><span class="cm">// Let's build something.</span></div>
             </div>
 
             <!-- Slide 3 : Classe OOP -->
             <div class="code-slide">
-              <div class="code-line"><span class="ln">1</span><span class="kw">class </span><span class="tp">Developer</span><span class="pu"> {</span></div>
-              <div class="code-line"><span class="ln">2</span>&nbsp; <span class="vr">name</span>  <span class="pu">=</span> <span class="str">"Matthieu Calesse"</span></div>
-              <div class="code-line"><span class="ln">3</span>&nbsp; <span class="vr">stack</span> <span class="pu">=</span> <span class="str">"Full Stack"</span></div>
-              <div class="code-line"><span class="ln">4</span></div>
-              <div class="code-line"><span class="ln">5</span>&nbsp; <span class="fn">skills</span><span class="pu">() {</span></div>
-              <div class="code-line"><span class="ln">6</span>&nbsp;&nbsp;&nbsp; <span class="kw">return</span> <span class="pu">[</span></div>
-              <div class="code-line"><span class="ln">7</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="str">"TypeScript"</span><span class="pu">,</span> <span class="str">"Java"</span><span class="pu">,</span></div>
-              <div class="code-line"><span class="ln">8</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="str">"HTML/CSS"</span><span class="pu">,</span>   <span class="str">"SQL"</span></div>
-              <div class="code-line"><span class="ln">9</span>&nbsp;&nbsp;&nbsp; <span class="pu">]</span></div>
+              <div class="code-line"><span class="ln">1</span><span class="cm">// Developer.ts</span></div>
+              <div class="code-line"><span class="ln">2</span></div>
+              <div class="code-line"><span class="ln">3</span><span class="kw">class </span><span class="tp">Developer</span><span class="pu"> {</span></div>
+              <div class="code-line"><span class="ln">4</span>&nbsp; <span class="vr">name</span>  <span class="pu">=</span> <span class="str">"Matthieu Calesse"</span></div>
+              <div class="code-line"><span class="ln">5</span>&nbsp; <span class="vr">stack</span> <span class="pu">=</span> <span class="str">"Full Stack"</span></div>
+              <div class="code-line"><span class="ln">6</span></div>
+              <div class="code-line"><span class="ln">7</span>&nbsp; <span class="fn">skills</span><span class="pu">() {</span></div>
+              <div class="code-line"><span class="ln">8</span>&nbsp;&nbsp;&nbsp; <span class="kw">return</span> <span class="pu">[</span><span class="str">"TypeScript"</span><span class="pu">,</span></div>
+              <div class="code-line"><span class="ln">9</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="str">"Java"</span><span class="pu">,</span> <span class="str">"SQL"</span><span class="pu">]</span></div>
               <div class="code-line"><span class="ln">10</span>&nbsp; <span class="pu">}</span></div>
               <div class="code-line"><span class="ln">11</span></div>
               <div class="code-line"><span class="ln">12</span>&nbsp; <span class="fn">status</span><span class="pu">() {</span></div>
@@ -1337,6 +1338,11 @@
         resetTimer();
       });
     });
+
+    /* Pause on hover */
+    const codeWin = document.querySelector('.code-window');
+    codeWin.addEventListener('mouseenter', () => clearInterval(timer));
+    codeWin.addEventListener('mouseleave', () => startTimer());
 
     startTimer();
   </script>
