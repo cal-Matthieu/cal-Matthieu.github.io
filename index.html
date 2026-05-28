@@ -1,297 +1,1364 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Matthieu Calesse - Portfolio</title>
 
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap">
+  <!-- SEO -->
+  <title>Matthieu Calesse — Développeur Full Stack à Lille</title>
+  <meta name="description" content="Portfolio de Matthieu Calesse, développeur Full Stack étudiant en BUT Informatique à Lille. TypeScript, Java, Node.js, API REST. Disponible pour stage ou alternance.">
+  <meta name="keywords" content="développeur web Lille, développeur full stack, portfolio, BUT informatique, TypeScript, Java, Node.js">
+  <meta name="author" content="Matthieu Calesse">
+  <link rel="canonical" href="https://cal-matthieu.github.io/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cal-matthieu.github.io/">
+  <meta property="og:title" content="Matthieu Calesse — Développeur Full Stack à Lille">
+  <meta property="og:description" content="Portfolio de Matthieu Calesse, développeur Full Stack étudiant en BUT Informatique à Lille. TypeScript, Java, Node.js, API REST.">
+  <meta property="og:image" content="https://cal-matthieu.github.io/images/CALESSE-portraits-iut-info-354.jpg">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Matthieu Calesse — Portfolio">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Matthieu Calesse — Développeur Full Stack à Lille">
+  <meta name="twitter:description" content="Portfolio de Matthieu Calesse, développeur Full Stack étudiant en BUT Informatique à Lille.">
+  <meta name="twitter:image" content="https://cal-matthieu.github.io/images/CALESSE-portraits-iut-info-354.jpg">
+
+  <!-- JSON-LD structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Matthieu Calesse",
+    "url": "https://cal-matthieu.github.io/",
+    "image": "https://cal-matthieu.github.io/images/CALESSE-portraits-iut-info-354.jpg",
+    "jobTitle": "Développeur Full Stack",
+    "description": "Étudiant en BUT Informatique à l'IUT de Lille, développeur Full Stack spécialisé en TypeScript, Java et Node.js.",
+    "email": "calmatthieu@yahoo.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Villeneuve-d'Ascq",
+      "addressRegion": "Nord",
+      "addressCountry": "FR"
+    },
+    "sameAs": [
+      "https://github.com/cal-Matthieu",
+      "https://www.linkedin.com/in/matthieu-calesse/"
+    ],
+    "knowsAbout": ["TypeScript", "JavaScript", "Java", "Node.js", "API REST", "HTML", "CSS", "PostgreSQL", "Socket.io", "Next.js"]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sidebar-bg: #0f172a;
+      --sidebar-border: rgba(255,255,255,0.06);
+      --accent: #3b82f6;
+      --accent-dark: #1d4ed8;
+      --accent-light: #dbeafe;
+      --accent-dim: rgba(59,130,246,0.08);
+      --content-bg: #f8fafc;
+      --section-white: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow-sm: 0 2px 8px rgba(15,23,42,0.07);
+      --shadow-md: 0 6px 24px rgba(15,23,42,0.1);
+      --sidebar-width: 360px;
+      --ease: 0.2s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--content-bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ════════════════════════════════
+       SIDEBAR
+    ════════════════════════════════ */
+    .sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: var(--sidebar-width);
+      height: 100vh;
+      background: var(--sidebar-bg);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 50;
+    }
+
+    .sidebar::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+
+    .sidebar::after {
+      content: '';
+      position: absolute;
+      top: -100px; left: -80px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .sidebar-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 48px 36px;
+    }
+
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 36px;
+    }
+
+    .profile-photo-wrap {
+      position: relative;
+      width: 96px; height: 96px;
+      margin-bottom: 16px;
+    }
+
+    .profile-photo {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid rgba(59,130,246,0.6);
+      display: block;
+    }
+
+    .profile-photo-ring {
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 2px dashed rgba(59,130,246,0.25);
+      animation: spin 18s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .profile-status {
+      position: absolute;
+      bottom: 4px; right: 4px;
+      width: 14px; height: 14px;
+      background: #22c55e;
+      border-radius: 50%;
+      border: 2px solid var(--sidebar-bg);
+    }
+
+    .profile-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      text-align: center;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .profile-role {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(59,130,246,0.15);
+      border: 1px solid rgba(59,130,246,0.3);
+      color: #93c5fd;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+
+    .profile-bio {
+      font-size: 0.82rem;
+      color: #64748b;
+      text-align: center;
+      line-height: 1.7;
+      max-width: 240px;
+    }
+
+    .sidebar-nav { list-style: none; flex: 1; }
+    .sidebar-nav li { margin-bottom: 2px; }
+
+    .sidebar-nav a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: #64748b;
+      transition: all var(--ease);
+    }
+
+    .sidebar-nav a .nav-icon {
+      width: 32px; height: 32px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      transition: all var(--ease);
+    }
+
+    .sidebar-nav a:hover,
+    .sidebar-nav a.active { background: rgba(255,255,255,0.05); color: #f1f5f9; }
+
+    .sidebar-nav a:hover .nav-icon,
+    .sidebar-nav a.active .nav-icon { background: rgba(59,130,246,0.2); color: #93c5fd; }
+
+    .sidebar-nav a.active { color: #f1f5f9; }
+    .sidebar-nav a.active .nav-icon { color: var(--accent); }
+
+    .sidebar-bottom { padding-top: 24px; border-top: 1px solid var(--sidebar-border); }
+
+    .social-row { display: flex; gap: 10px; margin-bottom: 16px; }
+
+    .social-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--sidebar-border);
+      border-radius: 8px;
+      color: #64748b;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all var(--ease);
+    }
+
+    .social-btn:hover {
+      background: rgba(59,130,246,0.15);
+      border-color: rgba(59,130,246,0.3);
+      color: #93c5fd;
+    }
+
+    .btn-cv {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 11px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background var(--ease);
+    }
+
+    .btn-cv:hover { background: var(--accent-dark); }
+
+    /* ════════════════════════════════
+       MAIN CONTENT
+    ════════════════════════════════ */
+    .main { margin-left: var(--sidebar-width); min-height: 100vh; }
+
+    .section-wrap {
+      padding: 80px 72px;
+      scroll-margin-top: 0;
+    }
+
+    .section-wrap:nth-child(odd)  { background: var(--section-white); }
+    .section-wrap:nth-child(even) { background: var(--content-bg); }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+
+    .section-icon {
+      width: 44px; height: 44px;
+      background: var(--accent-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--text);
+    }
+
+    .section-line { flex: 1; height: 1px; background: var(--border); }
+
+    /* ── HERO ── */
+    .hero-wrap {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #2563eb 100%);
+      padding: 80px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    .hero-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; right: -60px;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(59,130,246,0.25) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 580px; }
+
+    .hero-greeting {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #93c5fd;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .hero-greeting::before {
+      content: '';
+      display: block;
+      width: 32px; height: 1px;
+      background: #93c5fd;
+    }
+
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      color: #f1f5f9;
+      margin-bottom: 16px;
+    }
+
+    .hero-title span { color: #60a5fa; }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: #94a3b8;
+      line-height: 1.8;
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .hero-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background var(--ease), transform var(--ease);
+    }
+
+    .hero-btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+    .hero-btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #cbd5e1;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all var(--ease);
+    }
+
+    .hero-btn-outline:hover {
+      border-color: rgba(255,255,255,0.4);
+      color: #f1f5f9;
+      transform: translateY(-1px);
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 290px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .about-text p { color: var(--text-muted); margin-bottom: 16px; line-height: 1.85; }
+    .about-text strong { color: var(--text); font-weight: 600; }
+    .about-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+
+    .about-tag {
+      background: var(--accent-dim);
+      color: var(--accent-dark);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* ── CODE WINDOW (animated) ── */
+    .code-window {
+      background: #1e293b;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md), 0 0 0 1px rgba(255,255,255,0.05);
+    }
+
+    .code-window-bar {
+      background: #0f172a;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-r { background: #ef4444; }
+    .dot-y { background: #f59e0b; }
+    .dot-g { background: #22c55e; }
+
+    .code-window-title {
+      margin: 0 auto;
+      font-size: 0.68rem;
+      color: #475569;
+      font-family: monospace;
+    }
+
+    .code-slides-wrap {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .code-slide {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      padding: 16px 18px;
+      opacity: 0;
+      transition: opacity 0.7s ease;
+      pointer-events: none;
+    }
+
+    .code-slide.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .code-line {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 4px;
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      font-size: 0.7rem;
+      line-height: 1.55;
+    }
+
+    .ln  { color: #334155; min-width: 14px; user-select: none; }
+    .kw  { color: #7c3aed; }
+    .tp  { color: #0ea5e9; }
+    .fn  { color: #3b82f6; }
+    .str { color: #22c55e; }
+    .cm  { color: #475569; font-style: italic; }
+    .vr  { color: #f59e0b; }
+    .pu  { color: #94a3b8; }
+    .ok  { color: #22c55e; font-weight: bold; }
+
+    .code-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 0;
+      background: #0f172a;
+    }
+
+    .code-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #334155;
+      cursor: pointer;
+      transition: background var(--ease), transform var(--ease);
+    }
+
+    .code-dot.active { background: var(--accent); transform: scale(1.3); }
+
+    /* ── TIMELINE ── */
+    .timeline { position: relative; padding-left: 28px; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 8px;
+      width: 2px;
+      height: calc(100% - 8px);
+      background: linear-gradient(to bottom, var(--accent), var(--accent-light));
+      border-radius: 2px;
+    }
+
+    .tl-item { position: relative; margin-bottom: 36px; }
+
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -33px; top: 6px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2.5px solid var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-dim);
+    }
+
+    .tl-date {
+      display: inline-block;
+      background: var(--accent-dim);
+      color: var(--accent-dark);
+      font-size: 0.71rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 10px;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .tl-title { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+    .tl-sub { font-size: 0.83rem; color: var(--text-muted); margin-bottom: 6px; }
+    .tl-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ── EXP CARDS ── */
+    .exp-list { display: flex; flex-direction: column; gap: 12px; }
+
+    .exp-card {
+      background: var(--section-white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 24px;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--ease);
+    }
+
+    .section-wrap:nth-child(odd) .exp-card { background: #f8fafc; }
+
+    .exp-card:hover { box-shadow: var(--shadow-md); border-color: #bfdbfe; transform: translateY(-2px); }
+
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
+
+    .exp-title { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .exp-company { font-size: 0.8rem; color: var(--accent); font-weight: 500; }
+
+    .exp-date {
+      font-size: 0.73rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      background: var(--content-bg);
+      padding: 3px 9px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .exp-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; line-height: 1.7; }
+
+    /* ── TAGS ── */
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+
+    .tag {
+      background: var(--accent-dim);
+      color: var(--accent-dark);
+      border: 1px solid #bfdbfe;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 0.71rem;
+      font-weight: 500;
+    }
+
+    /* ── PROJECT CARDS ── */
+    .project-list { display: flex; flex-direction: column; gap: 16px; }
+
+    .project-card {
+      background: var(--section-white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--ease);
+    }
+
+    .section-wrap:nth-child(odd) .project-card { background: #f8fafc; }
+
+    .project-card:hover { box-shadow: var(--shadow-md); border-color: #bfdbfe; transform: translateY(-2px); }
+
+    .browser-frame {
+      background: #f1f5f9;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-wrap:nth-child(odd) .browser-frame { background: #e8f0fe; }
+
+    .browser-dots { display: flex; gap: 5px; }
+    .browser-dot { width: 9px; height: 9px; border-radius: 50%; }
+    .bd-r { background: #fca5a5; }
+    .bd-y { background: #fcd34d; }
+    .bd-g { background: #86efac; }
+
+    .browser-bar {
+      flex: 1;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      gap: 6px;
+      font-size: 0.67rem;
+      color: var(--text-muted);
+      overflow: hidden;
+    }
+
+    .browser-bar i { font-size: 0.6rem; color: #22c55e; flex-shrink: 0; }
+
+    .browser-actions { display: flex; gap: 8px; }
+    .browser-actions a { color: var(--text-muted); font-size: 0.85rem; text-decoration: none; transition: color var(--ease); }
+    .browser-actions a:hover { color: var(--accent); }
+
+    .project-body { padding: 20px 22px; }
+
+    .project-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      transition: color var(--ease);
+    }
+
+    .project-card:hover .project-title { color: var(--accent); }
+    .project-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px; line-height: 1.75; }
+
+    /* ── SKILLS ── */
+    .skills-grid { display: flex; flex-direction: column; gap: 20px; }
+
+    .skill-row { display: grid; grid-template-columns: 160px 1fr; gap: 16px; align-items: start; }
+
+    .skill-label { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; padding-top: 4px; }
+
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .skill-pill {
+      background: var(--section-white);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--ease);
+    }
+
+    .section-wrap:nth-child(odd) .skill-pill { background: #f8fafc; }
+
+    .skill-pill:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 2px 8px rgba(59,130,246,0.15); }
+
+    .skill-pill.learning { background: var(--accent-dim); border-color: #bfdbfe; color: var(--accent-dark); }
+
+    /* ── CONTACT ── */
+    .contact-section { background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%) !important; }
+
+    .contact-card {
+      background: #fff;
+      border: 1px solid #bfdbfe;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+      max-width: 560px;
+    }
+
+    .contact-heading { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 700; letter-spacing: -1px; color: var(--text); margin-bottom: 8px; }
+    .contact-sub { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 28px; line-height: 1.7; }
+
+    .contact-email {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      margin-bottom: 20px;
+      transition: background var(--ease);
+    }
+
+    .contact-email:hover { background: var(--accent-dark); }
+
+    .contact-row { display: flex; flex-direction: column; gap: 10px; }
+
+    .contact-link { display: flex; align-items: center; gap: 10px; font-size: 0.87rem; color: var(--text-muted); text-decoration: none; transition: color var(--ease); }
+    .contact-link i { width: 16px; text-align: center; color: var(--accent); }
+    .contact-link:hover { color: var(--accent); }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--sidebar-bg);
+      padding: 40px 72px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+
+    .footer-left { position: relative; z-index: 1; }
+
+    .footer-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 4px;
+    }
+
+    .footer-copy { font-size: 0.75rem; color: #475569; }
+
+    .footer-made {
+      position: relative;
+      z-index: 1;
+      font-size: 0.75rem;
+      color: #334155;
+      text-align: center;
+      font-family: monospace;
+    }
+
+    .footer-made span { color: #3b82f6; }
+
+    .footer-right {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .footer-link {
+      color: #475569;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: color var(--ease);
+    }
+
+    .footer-link:hover { color: #3b82f6; }
+
+    .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      color: #475569;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all var(--ease);
+    }
+
+    .footer-top:hover { background: rgba(59,130,246,0.15); color: #93c5fd; border-color: rgba(59,130,246,0.3); }
+
+    /* ── MOBILE NAV ── */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 56px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 0 20px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mobile-nav-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .sidebar { display: none; }
+      .mobile-nav { display: flex; }
+      .main { margin-left: 0; }
+      .section-wrap { padding: 60px 24px; }
+      .hero-wrap { padding: 60px 24px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .code-window { display: none; }
+      .skill-row { grid-template-columns: 1fr; gap: 8px; }
+      .footer { grid-template-columns: 1fr; text-align: center; padding: 32px 24px; }
+      .footer-right { justify-content: center; }
+    }
+
+    @media (max-width: 600px) {
+      .section-wrap { padding: 48px 18px; }
+    }
+  </style>
 </head>
-
 <body>
-  <!-- En-tête avec navigation -->
-  <header>
-    <nav>
-      <div class="logo">Matthieu CALESSE</div>
-      <!-- Checkbox pour le menu -->
-      <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-hidden="true">
-      <label for="menu-toggle" class="hamburger" aria-label="Menu de navigation" role="button" aria-expanded="false">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </label>
-      <ul id="nav-menu" class="nav-menu" role="navigation" aria-label="Navigation principale">
-        <li><a href="#accueil" class="active" aria-current="page">Accueil</a></li>
-        <li><a href="#formations">Formations</a></li>
-        <li><a href="#experiences">Expériences</a></li>
-        <li><a href="#projets">Projets</a></li>
-        <li><a href="#competences">Compétences</a></li>
-        <li><a href="#contact">Contact</a></li>
+
+  <nav class="mobile-nav" aria-label="Navigation mobile">
+    <span class="mobile-nav-name">Matthieu Calesse</span>
+    <a href="mailto:calmatthieu@yahoo.com" style="color:var(--accent)" aria-label="Envoyer un email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+  </nav>
+
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="sidebar" aria-label="Navigation principale">
+    <div class="sidebar-inner">
+      <div class="profile">
+        <div class="profile-photo-wrap">
+          <img src="images/CALESSE-portraits-iut-info-354.jpg" alt="Photo de profil de Matthieu Calesse" class="profile-photo" width="96" height="96">
+          <div class="profile-photo-ring" aria-hidden="true"></div>
+          <div class="profile-status" title="Disponible" aria-label="Disponible"></div>
+        </div>
+        <div class="profile-name">Matthieu Calesse</div>
+        <div class="profile-role">
+          <svg width="7" height="7" aria-hidden="true"><circle cx="3.5" cy="3.5" r="3.5" fill="#22c55e"/></svg>
+          Full Stack · BUT Info
+        </div>
+        <p class="profile-bio">Étudiant en 2ème année à l'IUT de Lille. Du backend robuste à l'interface soignée.</p>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li><a href="#hero" class="active"><span class="nav-icon"><i class="fas fa-home" aria-hidden="true"></i></span>Accueil</a></li>
+        <li><a href="#about"><span class="nav-icon"><i class="fas fa-user" aria-hidden="true"></i></span>À propos</a></li>
+        <li><a href="#formations"><span class="nav-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></span>Formations</a></li>
+        <li><a href="#experiences"><span class="nav-icon"><i class="fas fa-briefcase" aria-hidden="true"></i></span>Expériences</a></li>
+        <li><a href="#projets"><span class="nav-icon"><i class="fas fa-rocket" aria-hidden="true"></i></span>Projets</a></li>
+        <li><a href="#competences"><span class="nav-icon"><i class="fas fa-code" aria-hidden="true"></i></span>Compétences</a></li>
+        <li><a href="#contact"><span class="nav-icon"><i class="fas fa-paper-plane" aria-hidden="true"></i></span>Contact</a></li>
       </ul>
-    </nav>
-  </header>
 
+      <div class="sidebar-bottom">
+        <div class="social-row">
+          <a href="https://github.com/cal-Matthieu" target="_blank" rel="noopener noreferrer" class="social-btn" title="GitHub" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/matthieu-calesse/" target="_blank" rel="noopener noreferrer" class="social-btn" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+          <a href="mailto:calmatthieu@yahoo.com" class="social-btn" title="Email" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+        </div>
+        <a href="doc/cv.pdf" download="CV_Matthieu_Calesse.pdf" class="btn-cv">
+          <i class="fas fa-download" aria-hidden="true"></i> Télécharger le CV
+        </a>
+      </div>
+    </div>
+  </aside>
 
-  <!-- Contenu principal -->
-  <main>
-    <!-- Section Accueil -->
-    <section id="accueil" class="section fade-in">
-      <img src="images/CALESSE-portraits-iut-info-354.jpg" alt="Photo de Matthieu Calesse" class="photo-profil">
-      <h1>Matthieu Calesse</h1>
-      <div class="presentation">
-        <p>Étudiant en BUT Informatique à l’IUT de Lille, je me spécialise dans le développement web et logiciel, avec un intérêt marqué pour l’intelligence artificielle. Je m’oriente plus particulièrement vers les problématiques liées aux données, aux bases de données et à l’automatisation des systèmes.
-Je souhaite évoluer vers un poste de développeur polyvalent, avec une expertise progressive dans la gestion et l’exploitation des données. Curieux, rigoureux et impliqué, je développe mes compétences techniques à travers des projets concrets et collaboratifs.
-Ce CV numérique met en avant mon parcours, mes réalisations et les compétences que je peux mobiliser dans un contexte professionnel.
-        </p>
+  <!-- ══ MAIN CONTENT ══ -->
+  <main class="main">
+
+    <!-- ── HERO ── -->
+    <section class="hero-wrap" id="hero" aria-label="Introduction">
+      <div class="hero-content">
+        <div class="hero-greeting">Développeur Full Stack</div>
+        <h1 class="hero-title">Je conçois des applications<br><span>de A à Z.</span></h1>
+        <p class="hero-sub">Du backend robuste à l'interface soignée — API REST, jeux en réseau, sites web modernes. Étudiant en BUT Informatique à Lille, disponible pour un stage ou une alternance.</p>
+        <div class="hero-actions">
+          <a href="#projets" class="hero-btn-primary"><i class="fas fa-rocket" aria-hidden="true"></i> Voir mes projets</a>
+          <a href="#contact" class="hero-btn-outline"><i class="fas fa-paper-plane" aria-hidden="true"></i> Me contacter</a>
+        </div>
       </div>
     </section>
 
-    <!-- Section Formations -->
-    <section id="formations" class="section">
-      <h2>Formations</h2>
+    <!-- ── ABOUT ── -->
+    <section class="section-wrap" id="about" aria-labelledby="about-title">
+      <div class="section-header">
+        <div class="section-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h2 class="section-title" id="about-title">À propos</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <p>Étudiant en <strong>BUT Informatique</strong> à l'IUT de Lille, je conçois des applications web complètes avec un intérêt marqué pour les <strong>systèmes réseau</strong>, l'IA et les données.</p>
+          <p>Mes projets académiques m'ont amené à construire un jeu multijoueur temps réel, une API REST en architecture couches, et des applications Java complexes — en équipe comme en solo.</p>
+          <p>Curieux, rigoureux et autonome. Je cherche à comprendre comment les systèmes fonctionnent, pas juste à faire marcher le code.</p>
+          <div class="about-tags">
+            <span class="about-tag">🎓 BUT Info 2027</span>
+            <span class="about-tag">📍 Villeneuve-d'Ascq</span>
+            <span class="about-tag">🚀 Open to work</span>
+          </div>
+        </div>
+
+        <div class="code-window" aria-hidden="true">
+          <div class="code-window-bar">
+            <div class="dot dot-r"></div>
+            <div class="dot dot-y"></div>
+            <div class="dot dot-g"></div>
+            <span class="code-window-title" id="code-filename">matthieu.ts</span>
+          </div>
+
+          <div class="code-slides-wrap">
+            <div class="code-slide active">
+              <div class="code-line"><span class="ln">1</span><span class="cm">// matthieu.ts</span></div>
+              <div class="code-line"><span class="ln">2</span></div>
+              <div class="code-line"><span class="ln">3</span><span class="kw">const </span><span class="vr">dev</span><span class="pu">: {</span></div>
+              <div class="code-line"><span class="ln">4</span>&nbsp; <span class="fn">name</span><span class="pu">:</span>  <span class="tp">string</span></div>
+              <div class="code-line"><span class="ln">5</span>&nbsp; <span class="fn">type</span><span class="pu">:</span>  <span class="str">"Full Stack"</span></div>
+              <div class="code-line"><span class="ln">6</span>&nbsp; <span class="fn">front</span><span class="pu">:</span> <span class="tp">string</span><span class="pu">[]</span></div>
+              <div class="code-line"><span class="ln">7</span>&nbsp; <span class="fn">back</span><span class="pu">:</span>  <span class="tp">string</span><span class="pu">[]</span></div>
+              <div class="code-line"><span class="ln">8</span><span class="pu">} = {</span></div>
+              <div class="code-line"><span class="ln">9</span>&nbsp; <span class="fn">name</span><span class="pu">:</span>  <span class="str">"Calesse"</span><span class="pu">,</span></div>
+              <div class="code-line"><span class="ln">10</span>&nbsp; <span class="fn">type</span><span class="pu">:</span>  <span class="str">"Full Stack"</span><span class="pu">,</span></div>
+              <div class="code-line"><span class="ln">11</span>&nbsp; <span class="fn">front</span><span class="pu">:</span> <span class="pu">[</span><span class="str">"HTML/CSS"</span><span class="pu">,</span> <span class="str">"JS/TS"</span><span class="pu">],</span></div>
+              <div class="code-line"><span class="ln">12</span>&nbsp; <span class="fn">back</span><span class="pu">:</span>  <span class="pu">[</span><span class="str">"Java"</span><span class="pu">,</span> <span class="str">"Node.js"</span><span class="pu">]</span></div>
+              <div class="code-line"><span class="ln">13</span><span class="pu">}</span></div>
+              <div class="code-line"><span class="ln">14</span></div>
+              <div class="code-line"><span class="ln">15</span><span class="cm">// Open to work </span><span class="ok">✓</span></div>
+            </div>
+
+            <div class="code-slide">
+              <div class="code-line"><span class="ln">1</span><span class="cm">// developer.js</span></div>
+              <div class="code-line"><span class="ln">2</span></div>
+              <div class="code-line"><span class="ln">3</span><span class="kw">const </span><span class="vr">dev</span><span class="pu"> = {</span></div>
+              <div class="code-line"><span class="ln">4</span>&nbsp; <span class="fn">name</span><span class="pu">:</span>   <span class="str">"Matthieu Calesse"</span><span class="pu">,</span></div>
+              <div class="code-line"><span class="ln">5</span>&nbsp; <span class="fn">role</span><span class="pu">:</span>   <span class="str">"Full Stack Dev"</span><span class="pu">,</span></div>
+              <div class="code-line"><span class="ln">6</span>&nbsp; <span class="fn">front</span><span class="pu">:</span>  <span class="pu">[</span><span class="str">"HTML"</span><span class="pu">,</span> <span class="str">"CSS"</span><span class="pu">,</span> <span class="str">"TS"</span><span class="pu">],</span></div>
+              <div class="code-line"><span class="ln">7</span>&nbsp; <span class="fn">back</span><span class="pu">:</span>   <span class="pu">[</span><span class="str">"Java"</span><span class="pu">,</span> <span class="str">"Node.js"</span><span class="pu">],</span></div>
+              <div class="code-line"><span class="ln">8</span>&nbsp; <span class="fn">db</span><span class="pu">:</span>     <span class="pu">[</span><span class="str">"PostgreSQL"</span><span class="pu">,</span> <span class="str">"HFSQL"</span><span class="pu">],</span></div>
+              <div class="code-line"><span class="ln">9</span>&nbsp; <span class="fn">status</span><span class="pu">:</span> <span class="str">"open to work"</span></div>
+              <div class="code-line"><span class="ln">10</span><span class="pu">}</span></div>
+              <div class="code-line"><span class="ln">11</span></div>
+              <div class="code-line"><span class="ln">12</span><span class="cm">// Let's build something.</span></div>
+            </div>
+
+            <div class="code-slide">
+              <div class="code-line"><span class="ln">1</span><span class="cm">// Developer.ts</span></div>
+              <div class="code-line"><span class="ln">2</span></div>
+              <div class="code-line"><span class="ln">3</span><span class="kw">class </span><span class="tp">Developer</span><span class="pu"> {</span></div>
+              <div class="code-line"><span class="ln">4</span>&nbsp; <span class="vr">name</span>  <span class="pu">=</span> <span class="str">"Matthieu Calesse"</span></div>
+              <div class="code-line"><span class="ln">5</span>&nbsp; <span class="vr">stack</span> <span class="pu">=</span> <span class="str">"Full Stack"</span></div>
+              <div class="code-line"><span class="ln">6</span></div>
+              <div class="code-line"><span class="ln">7</span>&nbsp; <span class="fn">skills</span><span class="pu">() {</span></div>
+              <div class="code-line"><span class="ln">8</span>&nbsp;&nbsp;&nbsp; <span class="kw">return</span> <span class="pu">[</span><span class="str">"TypeScript"</span><span class="pu">,</span></div>
+              <div class="code-line"><span class="ln">9</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="str">"Java"</span><span class="pu">,</span> <span class="str">"SQL"</span><span class="pu">]</span></div>
+              <div class="code-line"><span class="ln">10</span>&nbsp; <span class="pu">}</span></div>
+              <div class="code-line"><span class="ln">11</span></div>
+              <div class="code-line"><span class="ln">12</span>&nbsp; <span class="fn">status</span><span class="pu">() {</span></div>
+              <div class="code-line"><span class="ln">13</span>&nbsp;&nbsp;&nbsp; <span class="kw">return</span> <span class="str">"Open to work 🚀"</span></div>
+              <div class="code-line"><span class="ln">14</span>&nbsp; <span class="pu">}</span></div>
+              <div class="code-line"><span class="ln">15</span><span class="pu">}</span></div>
+            </div>
+          </div>
+
+          <div class="code-indicators">
+            <div class="code-dot active" data-index="0"></div>
+            <div class="code-dot" data-index="1"></div>
+            <div class="code-dot" data-index="2"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FORMATIONS ── -->
+    <section class="section-wrap" id="formations" aria-labelledby="formations-title">
+      <div class="section-header">
+        <div class="section-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <h2 class="section-title" id="formations-title">Formations</h2>
+        <div class="section-line"></div>
+      </div>
       <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-date">2024 - 2027</div>
-          <div class="timeline-content">
-            <h3>BUT Informatique</h3>
-            <p><strong>IUT de Lille</strong>, Villeneuve d'Ascq – 2ème année</p>
-            <p>Parcours axé sur le développement d'applications, programmation orientée objet, gestion de bases de
-              données, réseaux et méthodes agiles.</p>
+        <div class="tl-item">
+          <span class="tl-date">2024 — 2027</span>
+          <div class="tl-title">BUT Informatique</div>
+          <div class="tl-sub">IUT de Lille, Villeneuve-d'Ascq · 2ème année en cours</div>
+          <div class="tl-desc">Développement d'applications, programmation orientée objet, bases de données, réseaux, méthodes agiles.</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-date">2021</span>
+          <div class="tl-title">Baccalauréat Général</div>
+          <div class="tl-sub">Lycée Anatole France, Lillers</div>
+          <div class="tl-desc">Spécialités : Mathématiques · NSI (Numérique et Sciences Informatiques)</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-date">2020</span>
+          <div class="tl-title">Brevet des Collèges</div>
+          <div class="tl-sub">Collège Sainte-Marie, Aire-sur-la-Lys</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── EXPERIENCES ── -->
+    <section class="section-wrap" id="experiences" aria-labelledby="experiences-title">
+      <div class="section-header">
+        <div class="section-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        </div>
+        <h2 class="section-title" id="experiences-title">Expériences</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="exp-list">
+        <article class="exp-card">
+          <div class="exp-header">
+            <div>
+              <div class="exp-title">Stage — Validation Logiciel &amp; Support Client</div>
+              <div class="exp-company">MAPAP · Avr – Juin 2026</div>
+            </div>
+            <span class="exp-date">2026</span>
+          </div>
+          <p class="exp-desc">Analyse, conception technique, réalisation, tests de validation, exploitation et maintenance d'une solution informatique. Rédaction de documents techniques.</p>
+          <div class="tags"><span class="tag">Magsiwin</span><span class="tag">HFSQL</span><span class="tag">Odoo</span><span class="tag">Documentation</span></div>
+        </article>
+        <article class="exp-card">
+          <div class="exp-header">
+            <div>
+              <div class="exp-title">Équipier polyvalent</div>
+              <div class="exp-company">McDonald's · Juil – Août 2025</div>
+            </div>
+            <span class="exp-date">2025</span>
+          </div>
+          <p class="exp-desc">Service client, préparation des commandes dans un environnement dynamique à haute cadence.</p>
+          <div class="tags"><span class="tag">Service client</span><span class="tag">Gestion du stress</span><span class="tag">Adaptabilité</span></div>
+        </article>
+        <article class="exp-card">
+          <div class="exp-header">
+            <div>
+              <div class="exp-title">Stage découverte industrie</div>
+              <div class="exp-company">APERAM · Juin – Juil 2022</div>
+            </div>
+            <span class="exp-date">2022</span>
+          </div>
+          <p class="exp-desc">Découverte des processus industriels dans une usine de sidérurgie et des logiciels spécialisés.</p>
+          <div class="tags"><span class="tag">Processus industriels</span><span class="tag">Observation technique</span></div>
+        </article>
+        <article class="exp-card">
+          <div class="exp-header">
+            <div>
+              <div class="exp-title">Stage découverte kinésithérapie</div>
+              <div class="exp-company">Cabinet de kiné · Juin – Juil 2021</div>
+            </div>
+            <span class="exp-date">2021</span>
+          </div>
+          <p class="exp-desc">Assistance dans les techniques de rééducation, accueil des patients.</p>
+          <div class="tags"><span class="tag">Observation médicale</span><span class="tag">Organisation</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── PROJETS ── -->
+    <section class="section-wrap" id="projets" aria-labelledby="projets-title">
+      <div class="section-header">
+        <div class="section-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+        </div>
+        <h2 class="section-title" id="projets-title">Projets</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="project-list">
+
+        <article class="project-card">
+          <div class="browser-frame">
+            <div class="browser-dots"><div class="browser-dot bd-r"></div><div class="browser-dot bd-y"></div><div class="browser-dot bd-g"></div></div>
+            <div class="browser-bar"><i class="fas fa-lock" aria-hidden="true"></i>cal-matthieu.github.io/sae_js/</div>
+            <div class="browser-actions">
+              <a href="https://cal-matthieu.github.io/sae_js/" target="_blank" rel="noopener noreferrer" title="Voir le projet en live" aria-label="SAE JS — voir en live"><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+              <a href="https://github.com/cal-Matthieu/sae_js" target="_blank" rel="noopener noreferrer" title="Voir le code sur GitHub" aria-label="SAE JS — voir sur GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">SAE JS — Shoot'em up multijoueur temps réel</h3>
+            <p class="project-desc">Jeu multijoueur (1–4 joueurs) avec synchronisation temps réel via Socket.io. Contrôles fluides, ennemis dynamiques, bonus variés et classement JSON persisté.</p>
+            <div class="tags"><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">Socket.io</span><span class="tag">Multijoueur</span><span class="tag">Client–serveur</span><span class="tag">Réseau</span></div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="browser-frame">
+            <div class="browser-dots"><div class="browser-dot bd-r"></div><div class="browser-dot bd-y"></div><div class="browser-dot bd-g"></div></div>
+            <div class="browser-bar"><i class="fas fa-lock" aria-hidden="true"></i>EcoDrop — API REST</div>
+            <div class="browser-actions">
+              <a href="projet-ecodrop.html" title="Voir le projet EcoDrop" aria-label="EcoDrop — voir le projet"><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+              <a href="https://github.com/cal-Matthieu/SAE2.01" target="_blank" rel="noopener noreferrer" title="Voir le code sur GitHub" aria-label="EcoDrop — voir sur GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">EcoDrop — API REST</h3>
+            <p class="project-desc">API REST en architecture couches (Servlets → DAO → JDBC → PostgreSQL) pour la gestion écologique de déchets. Auth token, CRUD complet, leaderboard et alertes de surcharge.</p>
+            <div class="tags"><span class="tag">Java</span><span class="tag">PostgreSQL</span><span class="tag">Jakarta Servlet</span><span class="tag">API REST</span><span class="tag">Pattern DAO</span></div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="browser-frame">
+            <div class="browser-dots"><div class="browser-dot bd-r"></div><div class="browser-dot bd-y"></div><div class="browser-dot bd-g"></div></div>
+            <div class="browser-bar"><i class="fas fa-lock" aria-hidden="true"></i>Jeu d'échecs avec IA</div>
+            <div class="browser-actions"><a href="https://github.com/cal-Matthieu/Chesschool" target="_blank" rel="noopener noreferrer" title="Voir le code sur GitHub" aria-label="Jeu d'échecs — voir sur GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Jeu d'échecs avec IA</h3>
+            <p class="project-desc">Interface graphique MVC avec gestion complète des règles et IA simple intégrée pour jouer contre l'ordinateur.</p>
+            <div class="tags"><span class="tag">Java</span><span class="tag">MVC</span><span class="tag">IA</span><span class="tag">Algorithmique</span></div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="browser-frame">
+            <div class="browser-dots"><div class="browser-dot bd-r"></div><div class="browser-dot bd-y"></div><div class="browser-dot bd-g"></div></div>
+            <div class="browser-bar"><i class="fas fa-lock" aria-hidden="true"></i>Tetris — Méthode Agile</div>
+            <div class="browser-actions"><a href="https://github.com/cal-Matthieu/groupe-3-main" target="_blank" rel="noopener noreferrer" title="Voir le code sur GitHub" aria-label="Tetris — voir sur GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Tetris — Méthode Agile</h3>
+            <p class="project-desc">Développement en équipe avec gestion de projet agile. Interface intuitive et documentation technique complète.</p>
+            <div class="tags"><span class="tag">Java</span><span class="tag">Agile / Scrum</span><span class="tag">Git</span><span class="tag">Travail en équipe</span></div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="browser-frame">
+            <div class="browser-dots"><div class="browser-dot bd-r"></div><div class="browser-dot bd-y"></div><div class="browser-dot bd-g"></div></div>
+            <div class="browser-bar"><i class="fas fa-lock" aria-hidden="true"></i>Jeu Labyrinthe</div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Jeu Labyrinthe</h3>
+            <p class="project-desc">Génération aléatoire de niveaux avec affichage graphique optimisé pour une expérience fluide.</p>
+            <div class="tags"><span class="tag">Java</span><span class="tag">Maven</span><span class="tag">Algorithmique avancée</span><span class="tag">Optimisation</span></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── COMPÉTENCES ── -->
+    <section class="section-wrap" id="competences" aria-labelledby="competences-title">
+      <div class="section-header">
+        <div class="section-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h2 class="section-title" id="competences-title">Compétences</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-row">
+          <div class="skill-label">Langages</div>
+          <div class="skill-pills">
+            <span class="skill-pill">TypeScript</span><span class="skill-pill">JavaScript</span>
+            <span class="skill-pill">Java</span><span class="skill-pill">Python</span>
+            <span class="skill-pill">HTML / CSS</span><span class="skill-pill">SQL</span>
+            <span class="skill-pill">C#</span><span class="skill-pill">PHP</span>
           </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-date">2021</div>
-          <div class="timeline-content">
-            <h3>Baccalauréat Général</h3>
-            <p><strong>Lycée Anatole France</strong>, Lillers</p>
-            <p>Spécialités : Mathématiques et NSI (Numérique et Sciences Informatiques)</p>
+        <div class="skill-row">
+          <div class="skill-label">Frameworks</div>
+          <div class="skill-pills">
+            <span class="skill-pill">Next.js</span>
+            <span class="skill-pill">Node.js</span>
+            <span class="skill-pill">Socket.io</span>
           </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-date">2020</div>
-          <div class="timeline-content">
-            <h3>Brevet des Collèges</h3>
-            <p><strong>Collège Sainte-Marie</strong>, Aire-sur-la-Lys</p>
+        <div class="skill-row">
+          <div class="skill-label">Architecture</div>
+          <div class="skill-pills">
+            <span class="skill-pill">API REST</span><span class="skill-pill">Client–serveur</span>
+            <span class="skill-pill">Programmation réseau</span>
+            <span class="skill-pill">POO</span><span class="skill-pill">Pattern DAO</span>
+            <span class="skill-pill">Architecture logicielle</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label">Bases de données</div>
+          <div class="skill-pills">
+            <span class="skill-pill">PostgreSQL</span><span class="skill-pill">JDBC</span>
+            <span class="skill-pill">SQL</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label">Réseaux &amp; Outils</div>
+          <div class="skill-pills">
+            <span class="skill-pill">TCP/IP</span><span class="skill-pill">WebSocket</span>
+            <span class="skill-pill">Connexions FTP</span>
+            <span class="skill-pill">Git</span><span class="skill-pill">Agile / Scrum</span>
+            <span class="skill-pill">Maven</span><span class="skill-pill">Tomcat</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label">En cours</div>
+          <div class="skill-pills">
+            <span class="skill-pill learning">WLangage (WinDev)</span>
+            <span class="skill-pill learning">HFSQL (WinDev)</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section Expériences -->
-    <section id="experiences" class="section">
-      <h2>Expériences professionnelles</h2>
-      <div class="experience-grid">
-         <article class="experience-card animate-on-scroll experience--learning">
-          <h3>Stage Validation Logiciel et support Client</h3>
-          <p class="company">
-            <a href="https://www.mapap.fr/" target="_blank" class="btn-company"><i class="fas fa-building"></i> MAPAP</a>
-          </p>
-          <p class="date"><time datetime="2021-06">Avril – Juin 2026</time></p>
-          <p class="description">
-          - Analyse, conception technique, réalisation, tests de validation, exploitation et maintenance d’une solution informatique
-          </p>
-          <p class="competences"><strong>Compétences acquises :</strong> travail en équipe, recherche et partage d'information technique, rédaction de 
-          documents techniques</p>
-          <p class="outils"><strong>Outils utilisés :</strong><span>Magsiwin</span><span>HFSQL</span><span>Odoo</span></p>
-          <a class="btn-project btn-project--disabled" aria-disabled="true" title="Stage en cours — rapport à venir"><i class="fas fa-file-alt"></i> Rapport de stage (à venir)</a>
-        </article>
-        <article class="experience-card animate-on-scroll">
-          <h3>Équipier polyvalent</h3>
-          <p class="company">
-            <a href="https://www.mcdonalds.fr/restaurants/mcdonalds-aire-sur-la-lys/528" target="_blank" class="btn-company"><i class="fas fa-building"></i> McDonald's</a>
-          </p>
-          <p class="date"><time datetime="2025-07">Juillet – Août 2025</time></p>
-          <p class="description">
-            Service client, préparation des commandes et entretien des espaces de travail dans un environnement
-            dynamique.
-          </p>
-          <p class="competences"><strong>Compétences acquises :</strong> Service client, gestion du stress, adaptabilité
-          </p>
-        </article>
-        <article class="experience-card animate-on-scroll">
-          <h3>Stage découverte industrie</h3>
-          <p class="company">
-            <a href="https://www.aperam.com/fr/about-us/plants/isbergues/" target="_blank" class="btn-company"><i class="fas fa-industry"></i> APERAM</a>
-          </p>
-          <p class="date"><time datetime="2022-06">Juin – Juillet 2022</time></p>
-          <p class="description">
-            Découverte du fonctionnement d'une usine de sidérurgie en observant les processus industriels et
-            l'utilisation des logiciels spécialisés.
-          </p>
-          <p class="competences"><strong>Compétences acquises :</strong> Observation des processus industriels,
-            initiation aux logiciels spécialisés</p>
-        </article>
-        <article class="experience-card animate-on-scroll">
-          <h3>Stage découverte kinésithérapie</h3>
-          <p class="company">
-            <a href="https://www.pagesjaunes.fr/pros/07994507" target="_blank" class="btn-company"><i class="fas fa-briefcase-medical"></i> Cabinet de kinésithérapie</a>
-          </p>
-          <p class="date"><time datetime="2021-06">Juin – Juillet 2021</time></p>
-          <p class="description">
-            Assistance dans l'application des techniques de rééducation pour aider les patients souffrant de troubles
-            musculaires et articulaires.
-          </p>
-          <p class="competences"><strong>Compétences acquises :</strong> Observation médicale, accueil des patients,
-            organisation</p>
-        </article>
+    <!-- ── CONTACT ── -->
+    <section class="section-wrap contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="section-header">
+        <div class="section-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h2 class="section-title" id="contact-title">Contact</h2>
+        <div class="section-line"></div>
       </div>
-    </section>
-
-    <!-- Section Projets -->
-    <section id="projets" class="section">
-      <h2>Réalisations & Projets</h2>
-      <div class="project-grid">
-        <article class="project-card animate-on-scroll">
-          <h3>Jeu d'échecs avec interface</h3>
-          <p class="tech"><i class="fas fa-code"></i> <strong>Technologies :</strong> Java</p>
-          <p class="date"><time datetime="2025-06">Juin – Juillet 2025</time> (BUT Informatique)</p>
-          <p class="description">
-            Développement d'un jeu d'échecs avec interface graphique en utilisant le modèle MVC. Gestion complète des
-            règles du jeu et intégration d'une IA simple pour jouer contre l'ordinateur.
-          </p>
-          <p class="competences"><strong>Compétences acquises :</strong> Programmation orientée objet, création
-            d'interface graphique, algorithmique</p>
-          <a class="btn-project btn-project--outline" href="https://github.com/cal-Matthieu/Chesschool" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        </article>
-        <article class="project-card animate-on-scroll">
-          <h3>Jeu Tetris (Méthode Agile)</h3>
-          <p class="tech"><i class="fas fa-code"></i> <strong>Technologies :</strong> Java, Git, Méthodes agiles</p>
-          <p class="date"><time datetime="2025-09">Septembre 2025</time> (BUT Informatique)</p>
-          <p class="description">
-            Développement du jeu Tetris en équipe avec gestion de projet agile. Création d'une interface utilisateur
-            intuitive et rédaction de la documentation technique complète.
-          </p>
-          <p class="competences"><strong>Compétences acquises :</strong> Travail en équipe agile, versioning avec Git
-          </p>
-          <a class="btn-project btn-project--outline" href="https://github.com/cal-Matthieu/groupe-3-main" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        </article>
-        <article class="project-card animate-on-scroll">
-          <h3>Jeu Labyrinthe avec interface</h3>
-          <p class="tech"><i class="fas fa-code"></i> <strong>Technologies :</strong> Java, Maven</p>
-          <p class="date"><time datetime="2025-10">Octobre 2025</time> (BUT Informatique)</p>
-          <p class="description">
-            Conception d'un jeu de labyrinthe avec génération aléatoire des niveaux. Gestion de l'affichage graphique et
-            optimisation des performances pour une expérience fluide.
-          </p>
-          <p class="competences"><strong>Compétences acquises :</strong> Algorithmique avancée, gestion de projet,
-            optimisation</p>
-        </article>
-        <article class="project-card animate-on-scroll">
-          <h3>SAE JS</h3>
-          <p class="tech"><i class="fas fa-code"></i> <strong>Technologies :</strong> TypeScript, NodeJS</p>
-          <p class="date"><time datetime="2025-10">Mars 2026</time> (BUT Informatique)</p>
-          <p class="description">Jeu shoot’em up multi-joueur en temps réel (1–4 joueurs) avec Socket.io. Contrôles fluides, ennemis dynamiques, bonus variés et classement des scores persisté en JSON.</p>
-          <p class="competences"><strong>Compétences acquises :</strong> a ajouter les compétences acquises</p>
-          <a class="btn-project" href="https://cal-matthieu.github.io/sae_js/" target="_blank"><i class="fas fa-eye"></i> Aperçu du projet</a>
-          <a class="btn-project btn-project--outline" href="https://github.com/cal-Matthieu/sae_js" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        </article>
-        <article class="project-card animate-on-scroll">
-          <h3>EcoDrop — API REST</h3>
-          <p class="tech"><i class="fas fa-code"></i> <strong>Technologies :</strong> Java, PostgreSQL, Jakarta Servlet, Tomcat, Jackson, Bruno</p>
-          <p class="date"><time datetime="2026-03">Mars 2026</time> (BUT Informatique)</p>
-          <p class="description">
-            API REST en architecture couches (Servlets → DAO → JDBC → PostgreSQL) pour la gestion écologique de déchets. Authentification par token, CRUD complet, leaderboard et alertes de surcharge.
-          </p>
-          <p class="competences"><strong>Compétences acquises :</strong> Architecture REST, pattern DAO, modélisation SQL avancée, authentification par token, tests API</p>
-          <a class="btn-project" href="projet-ecodrop.html"><i class="fas fa-eye"></i> Voir le projet</a>
-          <a class="btn-project btn-project--outline" href="https://github.com/cal-Matthieu/SAE2.01" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        </article>
-      </div>
-    </section>
-
-    <!-- Section Compétences -->
-    <section id="competences" class="section">
-      <h2>Compétences</h2>
-      <div class="competences-container">
-        <div class="competence-block">
-          <h3><i class="fas fa-laptop-code"></i> Compétences techniques</h3>
-          <ul>
-            <li>Programmation (Python, Java, HTML/CSS)</li>
-            <li>Gestion de bases de données (SQL)</li>
-            <li>Notions de réseaux (TCP/IP, routage, configuration)</li>
-            <li>Méthodes de développement agile</li>
-            <li>Versioning avec Git</li>
-            <li>JavaScript / Typescript</li>
-          </ul>
-        </div>
-        <div class="competence-block">
-          <h3><i class="fas fa-users"></i> Compétences humaines</h3>
-          <ul>
-            <li>Travail d'équipe (méthode Agile)</li>
-            <li>Sens de l'organisation</li>
-            <li>Adaptabilité</li>
-            <li>Rigueur</li>
-            <li>Communication</li>
-            <li>Autonomie</li>
-          </ul>
-        </div>
-        <div class="competence-block">
-          <h3><i class="fas fa-music"></i> Centre d'intérêt</h3>
-          <ul>
-            <li>Musique (trompette, alto)</li>
-            <li>Groupes musicaux : Harmonie, BRASS</li>
-            <li>Badminton</li>
-            <li>Développement informatique personnel</li>
-            <li>Lecture</li>
-            <li>L'économie, la finance</li>
-          </ul>
-        </div>
-      </div>
-      <div class="competence-block competence-block--learning">
-          <h3><i class="fas fa-graduation-cap"></i> En cours d'apprentissage</h3>
-          <ul>
-            <li>C#</li>
-            <li>PHP</li>
-            <li>WLangage</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section Contact -->
-    <section id="contact" class="section">
-      <h2>Contact</h2>
-      <div class="contact-info">
-        <div class="contact-item">
-          <i class="fas fa-envelope"></i>
-          <a href="mailto:calmatthieu@yahoo.com">calmatthieu@yahoo.com</a>
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-map-marker-alt"></i>
-          <span>59650 VILLENEUVE-D'ASCQ</span>
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-id-card"></i>
-          <span>Permis B</span>
-        </div>
-      </div>
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/matthieu-calesse-3a06b335a/" target="_blank" title="LinkedIn">
-          <i class="fab fa-linkedin"></i>
+      <div class="contact-card">
+        <div class="contact-heading">Travaillons ensemble.</div>
+        <p class="contact-sub">Ouvert aux opportunités de stage, d'alternance ou de projets freelance. N'hésitez pas à me contacter directement.</p>
+        <a href="mailto:calmatthieu@yahoo.com" class="contact-email">
+          <i class="fas fa-envelope" aria-hidden="true"></i> calmatthieu@yahoo.com
         </a>
-        <a href="https://github.com/cal-Matthieu" target="_blank" title="GitHub">
-          <i class="fab fa-github"></i>
-        </a>
+        <div class="contact-row">
+          <a href="https://www.linkedin.com/in/matthieu-calesse/" target="_blank" rel="noopener noreferrer" class="contact-link"><i class="fab fa-linkedin" aria-hidden="true"></i> linkedin.com/in/matthieu-calesse</a>
+          <a href="https://github.com/cal-Matthieu" target="_blank" rel="noopener noreferrer" class="contact-link"><i class="fab fa-github" aria-hidden="true"></i> github.com/cal-Matthieu</a>
+          <span class="contact-link"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Villeneuve-d'Ascq, 59 · Permis B</span>
+        </div>
       </div>
-      <a href="doc/cv.pdf" download="CV_Matthieu_Calesse.pdf" class="btn-download">
-        <i class="fas fa-download"></i> Télécharger le CV en PDF
-      </a>
     </section>
+
+    <!-- ── FOOTER ── -->
+    <footer class="footer">
+      <div class="footer-left">
+        <div class="footer-name">Matthieu Calesse</div>
+        <div class="footer-copy">© 2026 · Tous droits réservés</div>
+      </div>
+      <div class="footer-made">
+        Fait avec <span>HTML · CSS · JavaScript</span>
+      </div>
+      <div class="footer-right">
+        <a href="https://github.com/cal-Matthieu" target="_blank" rel="noopener noreferrer" class="footer-link" title="GitHub" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/in/matthieu-calesse/" target="_blank" rel="noopener noreferrer" class="footer-link" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="#hero" class="footer-top" title="Retour en haut" aria-label="Retour en haut de la page"><i class="fas fa-arrow-up" aria-hidden="true"></i></a>
+      </div>
+    </footer>
+
   </main>
 
-  <!-- Pied de page -->
-  <footer>
-    <p>&copy; 2026 Matthieu Calesse | <a href="https://www.linkedin.com/in/matthieu-calesse/"
-        target="_blank">LinkedIn</a></p>
-  </footer>
+  <script>
+    /* ── Nav active on scroll ── */
+    const sections = document.querySelectorAll('[id]');
+    const navLinks = document.querySelectorAll('.sidebar-nav a');
 
-  <!-- Script JavaScript -->
-  <script src="script.js"></script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + entry.target.id) link.classList.add('active');
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    /* ── Code window animation ── */
+    const slides     = document.querySelectorAll('.code-slide');
+    const dots       = document.querySelectorAll('.code-dot');
+    const filenames  = ['matthieu.ts', 'developer.js', 'Developer.ts'];
+    const filenameEl = document.getElementById('code-filename');
+    let current = 0;
+    let timer;
+
+    function goTo(index) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = index;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      filenameEl.textContent = filenames[current];
+    }
+
+    function startTimer() { timer = setInterval(() => goTo((current + 1) % slides.length), 4200); }
+    function resetTimer()  { clearInterval(timer); startTimer(); }
+
+    dots.forEach(dot => dot.addEventListener('click', () => {
+      goTo(parseInt(dot.dataset.index));
+      resetTimer();
+    }));
+
+    const codeWin = document.querySelector('.code-window');
+    if (codeWin) {
+      codeWin.addEventListener('mouseenter', () => clearInterval(timer));
+      codeWin.addEventListener('mouseleave', () => startTimer());
+    }
+
+    startTimer();
+  </script>
+
 </body>
-
 </html>
