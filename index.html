@@ -55,11 +55,13 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-  <!-- Fonts -->
+  <!-- Fonts — chargement asynchrone pour ne pas bloquer le rendu -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -588,7 +590,7 @@
     .exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
 
     .exp-title { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
-    .exp-company { font-size: 0.8rem; color: var(--accent); font-weight: 500; }
+    .exp-company { font-size: 0.8rem; color: var(--accent-dark); font-weight: 500; }
 
     .exp-date {
       font-size: 0.73rem;
@@ -664,8 +666,8 @@
 
     .browser-bar i { font-size: 0.6rem; color: #22c55e; flex-shrink: 0; }
 
-    .browser-actions { display: flex; gap: 8px; }
-    .browser-actions a { color: var(--text-muted); font-size: 0.85rem; text-decoration: none; transition: color var(--ease); }
+    .browser-actions { display: flex; gap: 4px; }
+    .browser-actions a { color: var(--text-muted); font-size: 0.85rem; text-decoration: none; transition: color var(--ease); display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
     .browser-actions a:hover { color: var(--accent); }
 
     .project-body { padding: 20px 22px; }
@@ -726,7 +728,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      background: var(--accent);
+      background: var(--accent-dark);
       color: #fff;
       padding: 14px 22px;
       border-radius: 10px;
@@ -737,7 +739,7 @@
       transition: background var(--ease);
     }
 
-    .contact-email:hover { background: var(--accent-dark); }
+    .contact-email:hover { background: #1e3a8a; }
 
     .contact-row { display: flex; flex-direction: column; gap: 10px; }
 
