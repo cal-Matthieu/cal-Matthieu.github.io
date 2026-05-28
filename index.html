@@ -91,9 +91,6 @@
       line-height: 1.6;
     }
 
-    /* ════════════════════════════════
-       SIDEBAR
-    ════════════════════════════════ */
     .sidebar {
       position: fixed;
       top: 0; left: 0;
@@ -286,9 +283,6 @@
 
     .btn-cv:hover { background: var(--accent-dark); }
 
-    /* ════════════════════════════════
-       MAIN CONTENT
-    ════════════════════════════════ */
     .main { margin-left: var(--sidebar-width); min-height: 100vh; }
 
     .section-wrap {
@@ -326,7 +320,6 @@
 
     .section-line { flex: 1; height: 1px; background: var(--border); }
 
-    /* ── HERO ── */
     .hero-wrap {
       background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #2563eb 100%);
       padding: 80px 72px;
@@ -430,7 +423,6 @@
       transform: translateY(-1px);
     }
 
-    /* ── ABOUT ── */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 290px;
@@ -451,7 +443,6 @@
       font-weight: 600;
     }
 
-    /* ── CODE WINDOW (animated) ── */
     .code-window {
       background: #1e293b;
       border-radius: 12px;
@@ -537,7 +528,6 @@
 
     .code-dot.active { background: var(--accent); transform: scale(1.3); }
 
-    /* ── TIMELINE ── */
     .timeline { position: relative; padding-left: 28px; }
 
     .timeline::before {
@@ -579,7 +569,6 @@
     .tl-sub { font-size: 0.83rem; color: var(--text-muted); margin-bottom: 6px; }
     .tl-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
 
-    /* ── EXP CARDS ── */
     .exp-list { display: flex; flex-direction: column; gap: 12px; }
 
     .exp-card {
@@ -613,7 +602,6 @@
 
     .exp-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; line-height: 1.7; }
 
-    /* ── TAGS ── */
     .tags { display: flex; flex-wrap: wrap; gap: 7px; }
 
     .tag {
@@ -626,7 +614,6 @@
       font-weight: 500;
     }
 
-    /* ── PROJECT CARDS ── */
     .project-list { display: flex; flex-direction: column; gap: 16px; }
 
     .project-card {
@@ -694,7 +681,6 @@
     .project-card:hover .project-title { color: var(--accent); }
     .project-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px; line-height: 1.75; }
 
-    /* ── SKILLS ── */
     .skills-grid { display: flex; flex-direction: column; gap: 20px; }
 
     .skill-row { display: grid; grid-template-columns: 160px 1fr; gap: 16px; align-items: start; }
@@ -721,7 +707,6 @@
 
     .skill-pill.learning { background: var(--accent-dim); border-color: #bfdbfe; color: var(--accent-dark); }
 
-    /* ── CONTACT ── */
     .contact-section { background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%) !important; }
 
     .contact-card {
@@ -759,7 +744,6 @@
     .contact-link i { width: 16px; text-align: center; color: var(--accent); }
     .contact-link:hover { color: var(--accent); }
 
-    /* ── FOOTER ── */
     .footer {
       background: var(--sidebar-bg);
       padding: 40px 72px;
@@ -837,7 +821,6 @@
 
     .footer-top:hover { background: rgba(59,130,246,0.15); color: #93c5fd; border-color: rgba(59,130,246,0.3); }
 
-    /* ── MOBILE NAV ── */
     .mobile-nav {
       display: none;
       position: fixed;
@@ -854,7 +837,6 @@
 
     .mobile-nav-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--text); }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
       .sidebar { display: none; }
       .mobile-nav { display: flex; }
@@ -880,7 +862,6 @@
     <a href="mailto:calmatthieu@yahoo.com" style="color:var(--accent)" aria-label="Envoyer un email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
   </nav>
 
-  <!-- ══ SIDEBAR ══ -->
   <aside class="sidebar" aria-label="Navigation principale">
     <div class="sidebar-inner">
       <div class="profile">
@@ -920,10 +901,8 @@
     </div>
   </aside>
 
-  <!-- ══ MAIN CONTENT ══ -->
   <main class="main">
 
-    <!-- ── HERO ── -->
     <section class="hero-wrap" id="hero" aria-label="Introduction">
       <div class="hero-content">
         <div class="hero-greeting">Développeur Full Stack</div>
@@ -935,8 +914,6 @@
         </div>
       </div>
     </section>
-
-    <!-- ── ABOUT ── -->
     <section class="section-wrap" id="about" aria-labelledby="about-title">
       <div class="section-header">
         <div class="section-icon" aria-hidden="true">
@@ -1027,8 +1004,6 @@
         </div>
       </div>
     </section>
-
-    <!-- ── FORMATIONS ── -->
     <section class="section-wrap" id="formations" aria-labelledby="formations-title">
       <div class="section-header">
         <div class="section-icon" aria-hidden="true">
@@ -1057,8 +1032,6 @@
         </div>
       </div>
     </section>
-
-    <!-- ── EXPERIENCES ── -->
     <section class="section-wrap" id="experiences" aria-labelledby="experiences-title">
       <div class="section-header">
         <div class="section-icon" aria-hidden="true">
@@ -1114,8 +1087,6 @@
         </article>
       </div>
     </section>
-
-    <!-- ── PROJETS ── -->
     <section class="section-wrap" id="projets" aria-labelledby="projets-title">
       <div class="section-header">
         <div class="section-icon" aria-hidden="true">
@@ -1198,8 +1169,6 @@
 
       </div>
     </section>
-
-    <!-- ── COMPÉTENCES ── -->
     <section class="section-wrap" id="competences" aria-labelledby="competences-title">
       <div class="section-header">
         <div class="section-icon" aria-hidden="true">
@@ -1261,8 +1230,6 @@
         </div>
       </div>
     </section>
-
-    <!-- ── CONTACT ── -->
     <section class="section-wrap contact-section" id="contact" aria-labelledby="contact-title">
       <div class="section-header">
         <div class="section-icon" aria-hidden="true">
@@ -1284,8 +1251,6 @@
         </div>
       </div>
     </section>
-
-    <!-- ── FOOTER ── -->
     <footer class="footer">
       <div class="footer-left">
         <div class="footer-name">Matthieu Calesse</div>
@@ -1304,7 +1269,6 @@
   </main>
 
   <script>
-    /* ── Nav active on scroll ── */
     const sections = document.querySelectorAll('[id]');
     const navLinks = document.querySelectorAll('.sidebar-nav a');
 
@@ -1329,7 +1293,6 @@
       });
     });
 
-    /* ── Code window animation ── */
     const slides     = document.querySelectorAll('.code-slide');
     const dots       = document.querySelectorAll('.code-dot');
     const filenames  = ['matthieu.ts', 'developer.js', 'Developer.ts'];
