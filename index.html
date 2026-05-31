@@ -1272,7 +1272,7 @@
   </main>
 
   <script>
-    const sections = document.querySelectorAll('[id]');
+    const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.sidebar-nav a');
 
     const observer = new IntersectionObserver(entries => {
@@ -1291,6 +1291,8 @@
     navLinks.forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
         const target = document.querySelector(link.getAttribute('href'));
         if (target) target.scrollIntoView({ behavior: 'smooth' });
       });
@@ -1323,7 +1325,7 @@
     const codeWin = document.querySelector('.code-window');
     if (codeWin) {
       codeWin.addEventListener('mouseenter', () => clearInterval(timer));
-      codeWin.addEventListener('mouseleave', () => startTimer());
+      codeWin.addEventListener('mouseleave', () => resetTimer());
     }
 
     startTimer();
