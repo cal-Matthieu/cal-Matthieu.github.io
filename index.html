@@ -1275,7 +1275,11 @@
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.sidebar-nav a');
 
+    let isScrollingByClick = false;
+    let scrollEndTimer;
+
     const observer = new IntersectionObserver(entries => {
+      if (isScrollingByClick) return;
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           navLinks.forEach(link => {
@@ -1293,10 +1297,18 @@
         e.preventDefault();
         navLinks.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
+        isScrollingByClick = true;
         const target = document.querySelector(link.getAttribute('href'));
         if (target) target.scrollIntoView({ behavior: 'smooth' });
       });
     });
+
+    window.addEventListener('scroll', () => {
+      if (isScrollingByClick) {
+        clearTimeout(scrollEndTimer);
+        scrollEndTimer = setTimeout(() => { isScrollingByClick = false; }, 150);
+      }
+    }, { passive: true });
 
     const slides     = document.querySelectorAll('.code-slide');
     const dots       = document.querySelectorAll('.code-dot');
