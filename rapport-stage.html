@@ -335,19 +335,34 @@
     }
     .pdf-download-btn:hover { background: var(--accent-dark); transform: translateY(-1px); }
 
-    .pdf-frame {
-      width: 100%;
+    .pdf-frames-wrap {
+      position: relative;
       height: 820px;
-      border: none;
-      display: block;
     }
 
-    .pdf-fallback {
-      display: none;
-      padding: 40px;
-      text-align: center;
+    .pdf-frame {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+      transition: opacity 0.18s ease;
     }
-    .pdf-fallback p { color: var(--text-muted); margin-bottom: 16px; font-size: 0.9rem; }
+
+    .pdf-frame.pdf-hidden {
+      opacity: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .pdf-frame.pdf-visible {
+      opacity: 1;
+      pointer-events: auto;
+      z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+      .pdf-frames-wrap { height: 500px; }
+    }
 
     /* ── CTA ── */
     .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -413,7 +428,6 @@
       .topbar-name { display: none; }
       .hero   { padding: 48px 24px; }
       .content { padding: 0 20px 60px; }
-      .pdf-frame { height: 500px; }
       footer  { padding: 28px 24px; flex-direction: column; gap: 16px; text-align: center; }
       .footer-right { justify-content: center; }
     }
@@ -543,15 +557,22 @@
             <i class="fas fa-download" aria-hidden="true"></i> Télécharger
           </a>
         </div>
-        <iframe
-          id="pdf-viewer"
-          src="doc/rapport-stage.pdf"
-          class="pdf-frame"
-          title="Rapport de stage Matthieu Calesse — MAPAP"
-          aria-label="Lecteur PDF intégré"
-        >
-          <p style="padding:40px;text-align:center;color:#64748b;">Votre navigateur ne prend pas en charge l'affichage des PDF. <a href="doc/rapport-stage.pdf" download>Télécharger le rapport</a>.</p>
-        </iframe>
+        <div class="pdf-frames-wrap">
+          <iframe
+            id="pdf-rapport"
+            src="doc/rapport-stage.pdf"
+            class="pdf-frame pdf-visible"
+            title="Rapport de stage Matthieu Calesse — MAPAP"
+            aria-label="Rapport de stage — lecteur PDF intégré"
+          ></iframe>
+          <iframe
+            id="pdf-glossaire"
+            src="doc/glossaire.pdf"
+            class="pdf-frame pdf-hidden"
+            title="Glossaire du stage MAPAP"
+            aria-label="Glossaire — lecteur PDF intégré"
+          ></iframe>
+        </div>
       </div>
     </section>
 
@@ -584,7 +605,7 @@
 
   <script>
     const tabs     = document.querySelectorAll('.pdf-tab');
-    const viewer   = document.getElementById('pdf-viewer');
+    const frames   = { rapport: document.getElementById('pdf-rapport'), glossaire: document.getElementById('pdf-glossaire') };
     const filename = document.getElementById('pdf-filename');
     const download = document.getElementById('pdf-download');
 
@@ -594,13 +615,15 @@
         tab.classList.add('active');
         tab.setAttribute('aria-selected', 'true');
 
-        const src   = tab.dataset.src;
-        const fname = tab.dataset.filename;
+        const key = tab.dataset.src.includes('glossaire') ? 'glossaire' : 'rapport';
+        Object.entries(frames).forEach(([id, frame]) => {
+          frame.classList.toggle('pdf-visible', id === key);
+          frame.classList.toggle('pdf-hidden',  id !== key);
+        });
 
-        viewer.src        = src;
-        filename.textContent = fname;
-        download.href     = src;
-        download.download = fname;
+        filename.textContent = tab.dataset.filename;
+        download.href        = tab.dataset.src;
+        download.download    = tab.dataset.filename;
       });
     });
   </script>
