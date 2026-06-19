@@ -274,10 +274,34 @@
       box-shadow: var(--shadow-md);
     }
 
-    .pdf-toolbar {
+    .pdf-tabs {
+      display: flex;
       background: #f1f5f9;
       border-bottom: 1px solid var(--border);
-      padding: 14px 20px;
+    }
+
+    .pdf-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 22px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      border: none;
+      background: none;
+      border-bottom: 2px solid transparent;
+      transition: all var(--ease);
+      white-space: nowrap;
+    }
+    .pdf-tab:hover { color: var(--text); }
+    .pdf-tab.active { color: var(--accent); border-bottom-color: var(--accent); background: #fff; }
+
+    .pdf-toolbar {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -288,7 +312,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
       font-weight: 500;
     }
@@ -502,27 +526,31 @@
       </div>
 
       <div class="pdf-wrap">
+        <div class="pdf-tabs" role="tablist" aria-label="Documents du stage">
+          <button class="pdf-tab active" role="tab" aria-selected="true" aria-controls="pdf-viewer" data-src="doc/rapport-stage.pdf" data-filename="Rapport_Stage_Matthieu_Calesse_MAPAP.pdf" data-label="Rapport de stage">
+            <i class="fas fa-file-pdf" aria-hidden="true"></i> Rapport de stage
+          </button>
+          <button class="pdf-tab" role="tab" aria-selected="false" aria-controls="pdf-viewer" data-src="doc/glossaire.pdf" data-filename="Glossaire_Stage_MAPAP.pdf" data-label="Glossaire">
+            <i class="fas fa-book" aria-hidden="true"></i> Glossaire
+          </button>
+        </div>
         <div class="pdf-toolbar">
           <div class="pdf-toolbar-info">
             <i class="fas fa-file-pdf" aria-hidden="true"></i>
-            Rapport_Stage_Matthieu_Calesse_MAPAP.pdf
+            <span id="pdf-filename">Rapport_Stage_Matthieu_Calesse_MAPAP.pdf</span>
           </div>
-          <a href="doc/rapport-stage.pdf" download="Rapport_Stage_Matthieu_Calesse_MAPAP.pdf" class="pdf-download-btn">
-            <i class="fas fa-download" aria-hidden="true"></i> Télécharger le rapport
+          <a id="pdf-download" href="doc/rapport-stage.pdf" download="Rapport_Stage_Matthieu_Calesse_MAPAP.pdf" class="pdf-download-btn">
+            <i class="fas fa-download" aria-hidden="true"></i> Télécharger
           </a>
         </div>
         <iframe
+          id="pdf-viewer"
           src="doc/rapport-stage.pdf"
           class="pdf-frame"
           title="Rapport de stage Matthieu Calesse — MAPAP"
-          aria-label="Rapport de stage MAPAP — lecteur PDF intégré"
+          aria-label="Lecteur PDF intégré"
         >
-          <div class="pdf-fallback">
-            <p>Votre navigateur ne prend pas en charge l'affichage des PDF.</p>
-            <a href="doc/rapport-stage.pdf" download="Rapport_Stage_Matthieu_Calesse_MAPAP.pdf" class="btn-primary">
-              <i class="fas fa-download" aria-hidden="true"></i> Télécharger le rapport
-            </a>
-          </div>
+          <p style="padding:40px;text-align:center;color:#64748b;">Votre navigateur ne prend pas en charge l'affichage des PDF. <a href="doc/rapport-stage.pdf" download>Télécharger le rapport</a>.</p>
         </iframe>
       </div>
     </section>
@@ -531,6 +559,9 @@
       <div class="cta-row">
         <a href="doc/rapport-stage.pdf" download="Rapport_Stage_Matthieu_Calesse_MAPAP.pdf" class="btn-primary">
           <i class="fas fa-download" aria-hidden="true"></i> Télécharger le rapport (PDF)
+        </a>
+        <a href="doc/glossaire.pdf" download="Glossaire_Stage_MAPAP.pdf" class="btn-outline">
+          <i class="fas fa-download" aria-hidden="true"></i> Télécharger le glossaire (PDF)
         </a>
         <a href="index.html#experiences" class="btn-outline">
           <i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux expériences
@@ -551,5 +582,27 @@
     </div>
   </footer>
 
+  <script>
+    const tabs     = document.querySelectorAll('.pdf-tab');
+    const viewer   = document.getElementById('pdf-viewer');
+    const filename = document.getElementById('pdf-filename');
+    const download = document.getElementById('pdf-download');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        const src   = tab.dataset.src;
+        const fname = tab.dataset.filename;
+
+        viewer.src        = src;
+        filename.textContent = fname;
+        download.href     = src;
+        download.download = fname;
+      });
+    });
+  </script>
 </body>
 </html>
