@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rapport de Stage — MAPAP | Matthieu Calesse</title>
+  <meta name="description" content="Rapport de stage de Matthieu Calesse chez MAPAP (Avr–Juin 2026) — Validation logiciel, support client et documentation technique. BUT Informatique, IUT de Lille.">
+  <link rel="canonical" href="https://cal-matthieu.github.io/rapport-stage.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sidebar-bg: #0f172a;
+      --sidebar-border: rgba(255,255,255,0.06);
+      --accent: #3b82f6;
+      --accent-dark: #1d4ed8;
+      --accent-light: #dbeafe;
+      --accent-dim: rgba(59,130,246,0.08);
+      --content-bg: #f8fafc;
+      --section-white: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow-sm: 0 2px 8px rgba(15,23,42,0.07);
+      --shadow-md: 0 6px 24px rgba(15,23,42,0.1);
+      --ease: 0.2s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--content-bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── Topbar ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--sidebar-bg);
+      border-bottom: 1px solid var(--sidebar-border);
+      padding: 0 48px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .topbar-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #64748b;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: color var(--ease);
+    }
+    .topbar-back:hover { color: #f1f5f9; }
+
+    .topbar-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #f1f5f9;
+    }
+
+    .topbar-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #64748b;
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color var(--ease);
+    }
+    .topbar-download:hover { color: #93c5fd; }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #2563eb 100%);
+      padding: 72px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; right: -60px;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(59,130,246,0.25) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 720px; }
+
+    .hero-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #93c5fd;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .hero-label::before { content: ''; display: block; width: 28px; height: 1px; background: #93c5fd; }
+
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      color: #f1f5f9;
+      margin-bottom: 14px;
+    }
+    .hero-title span { color: #60a5fa; }
+
+    .hero-meta {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-bottom: 28px;
+    }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .tag {
+      background: rgba(59,130,246,0.15);
+      border: 1px solid rgba(59,130,246,0.3);
+      color: #93c5fd;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ── Sections ── */
+    .content { max-width: 900px; margin: 0 auto; padding: 0 48px 80px; }
+
+    .section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .section:last-child { border-bottom: none; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .section-icon {
+      width: 40px; height: 40px;
+      background: var(--accent-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--accent);
+      font-size: 1rem;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .section-line { flex: 1; height: 1px; background: var(--border); }
+
+    .lead {
+      color: var(--text-muted);
+      line-height: 1.85;
+      margin-bottom: 28px;
+    }
+
+    /* ── Info cards ── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .info-card {
+      background: var(--section-white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .info-card-icon {
+      width: 36px; height: 36px;
+      background: var(--accent-dim);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+    }
+    .info-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 0.88rem; font-weight: 600; margin-bottom: 4px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .info-card p  { font-size: 0.88rem; color: var(--text); font-weight: 500; line-height: 1.5; }
+
+    /* ── Mission list ── */
+    .mission-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mission-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--section-white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .mission-num {
+      width: 28px; height: 28px;
+      background: var(--accent-dim);
+      border: 1px solid #bfdbfe;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .mission-body h3 { font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
+    .mission-body p  { font-size: 0.83rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ── PDF embed ── */
+    .pdf-wrap {
+      background: var(--section-white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .pdf-toolbar {
+      background: #f1f5f9;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .pdf-toolbar-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .pdf-toolbar-info i { color: var(--accent); }
+
+    .pdf-download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background var(--ease), transform var(--ease);
+      white-space: nowrap;
+    }
+    .pdf-download-btn:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+    .pdf-frame {
+      width: 100%;
+      height: 820px;
+      border: none;
+      display: block;
+    }
+
+    .pdf-fallback {
+      display: none;
+      padding: 40px;
+      text-align: center;
+    }
+    .pdf-fallback p { color: var(--text-muted); margin-bottom: 16px; font-size: 0.9rem; }
+
+    /* ── CTA ── */
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background var(--ease), transform var(--ease);
+    }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all var(--ease);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--sidebar-bg);
+      padding: 32px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+    .footer-left { position: relative; z-index: 1; }
+    .footer-name { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #f1f5f9; margin-bottom: 2px; }
+    .footer-copy { font-size: 0.72rem; color: #475569; }
+    .footer-right { position: relative; z-index: 1; display: flex; gap: 12px; align-items: center; }
+    .footer-link { color: #475569; font-size: 1rem; text-decoration: none; transition: color var(--ease); }
+    .footer-link:hover { color: #3b82f6; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .topbar { padding: 0 20px; }
+      .topbar-name { display: none; }
+      .hero   { padding: 48px 24px; }
+      .content { padding: 0 20px 60px; }
+      .pdf-frame { height: 500px; }
+      footer  { padding: 28px 24px; flex-direction: column; gap: 16px; text-align: center; }
+      .footer-right { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="topbar" aria-label="Navigation">
+    <a href="index.html" class="topbar-back"><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour au portfolio</a>
+    <span class="topbar-name">Matthieu Calesse</span>
+    <a href="doc/rapport-stage.pdf" download="Rapport_Stage_Matthieu_Calesse_MAPAP.pdf" class="topbar-download">
+      <i class="fas fa-download" aria-hidden="true"></i> Télécharger
+    </a>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-label">Stage BUT Informatique · Avr – Juin 2026</div>
+      <h1 class="hero-title">Rapport de Stage —<br><span>MAPAP</span></h1>
+      <p class="hero-meta">Validation logiciel · Support client · Documentation technique</p>
+      <div class="tag-row">
+        <span class="tag">Magsiwin</span>
+        <span class="tag">HFSQL</span>
+        <span class="tag">Odoo</span>
+        <span class="tag">WLangage</span>
+        <span class="tag">Documentation</span>
+        <span class="tag">Tests de validation</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
+
+    <section class="section">
+      <div class="section-header">
+        <div class="section-icon" aria-hidden="true"><i class="fas fa-building"></i></div>
+        <h2 class="section-title">Contexte du stage</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-card-icon" aria-hidden="true"><i class="fas fa-building"></i></div>
+          <h3>Entreprise</h3>
+          <p>MAPAP</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon" aria-hidden="true"><i class="fas fa-calendar-alt"></i></div>
+          <h3>Période</h3>
+          <p>Avr – Juin 2026</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon" aria-hidden="true"><i class="fas fa-graduation-cap"></i></div>
+          <h3>Formation</h3>
+          <p>BUT Informatique<br>IUT de Lille</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon" aria-hidden="true"><i class="fas fa-tasks"></i></div>
+          <h3>Type de mission</h3>
+          <p>Validation logiciel &amp; support client</p>
+        </div>
+      </div>
+
+      <p class="lead">Ce stage de fin de 2ème année de BUT Informatique s'est déroulé chez MAPAP. Les missions ont porté sur l'analyse, la conception technique, la réalisation, les tests de validation, l'exploitation et la maintenance d'une solution informatique, ainsi que la rédaction de documents techniques.</p>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="section-icon" aria-hidden="true"><i class="fas fa-list-check"></i></div>
+        <h2 class="section-title">Missions principales</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="mission-list">
+        <div class="mission-item">
+          <div class="mission-num">01</div>
+          <div class="mission-body">
+            <h3>Analyse &amp; conception technique</h3>
+            <p>Étude des besoins métier, formalisation des spécifications techniques et conception des solutions à implémenter dans l'environnement Magsiwin / HFSQL.</p>
+          </div>
+        </div>
+        <div class="mission-item">
+          <div class="mission-num">02</div>
+          <div class="mission-body">
+            <h3>Réalisation &amp; tests de validation</h3>
+            <p>Développement et intégration des fonctionnalités, rédaction et exécution des plans de tests pour valider la conformité des livrables.</p>
+          </div>
+        </div>
+        <div class="mission-item">
+          <div class="mission-num">03</div>
+          <div class="mission-body">
+            <h3>Support client &amp; maintenance</h3>
+            <p>Assistance aux utilisateurs, diagnostic et résolution des incidents, maintien en condition opérationnelle de la solution en production.</p>
+          </div>
+        </div>
+        <div class="mission-item">
+          <div class="mission-num">04</div>
+          <div class="mission-body">
+            <h3>Documentation technique</h3>
+            <p>Rédaction des documents associés aux développements : spécifications, guides utilisateurs et rapports de tests.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="section-icon" aria-hidden="true"><i class="fas fa-file-pdf"></i></div>
+        <h2 class="section-title">Rapport complet</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="pdf-wrap">
+        <div class="pdf-toolbar">
+          <div class="pdf-toolbar-info">
+            <i class="fas fa-file-pdf" aria-hidden="true"></i>
+            Rapport_Stage_Matthieu_Calesse_MAPAP.pdf
+          </div>
+          <a href="doc/rapport-stage.pdf" download="Rapport_Stage_Matthieu_Calesse_MAPAP.pdf" class="pdf-download-btn">
+            <i class="fas fa-download" aria-hidden="true"></i> Télécharger le rapport
+          </a>
+        </div>
+        <iframe
+          src="doc/rapport-stage.pdf"
+          class="pdf-frame"
+          title="Rapport de stage Matthieu Calesse — MAPAP"
+          aria-label="Rapport de stage MAPAP — lecteur PDF intégré"
+        >
+          <div class="pdf-fallback">
+            <p>Votre navigateur ne prend pas en charge l'affichage des PDF.</p>
+            <a href="doc/rapport-stage.pdf" download="Rapport_Stage_Matthieu_Calesse_MAPAP.pdf" class="btn-primary">
+              <i class="fas fa-download" aria-hidden="true"></i> Télécharger le rapport
+            </a>
+          </div>
+        </iframe>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="cta-row">
+        <a href="doc/rapport-stage.pdf" download="Rapport_Stage_Matthieu_Calesse_MAPAP.pdf" class="btn-primary">
+          <i class="fas fa-download" aria-hidden="true"></i> Télécharger le rapport (PDF)
+        </a>
+        <a href="index.html#experiences" class="btn-outline">
+          <i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux expériences
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-left">
+      <div class="footer-name">Matthieu Calesse</div>
+      <div class="footer-copy">© 2026 · Tous droits réservés</div>
+    </div>
+    <div class="footer-right">
+      <a href="https://github.com/cal-Matthieu" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+      <a href="https://www.linkedin.com/in/matthieu-calesse/" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+    </div>
+  </footer>
+
+</body>
+</html>
