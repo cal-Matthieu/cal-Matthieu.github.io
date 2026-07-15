@@ -8,6 +8,18 @@
   <meta name="description" content="Matthieu Calesse recherche une alternance en BUT 3 Informatique (Parcours A) à l'IUT de Lille pour 2026-2027. Toutes les informations pratiques pour l'entreprise.">
   <meta name="robots" content="noindex">
 
+  <!-- Open Graph (aperçu du lien en partage mail / LinkedIn / Teams) -->
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://cal-matthieu.github.io/alternance.html">
+  <meta property="og:title" content="Matthieu Calesse — Alternance BUT3 Informatique 2026-2027">
+  <meta property="og:description" content="Développeur Full Stack en recherche d'alternance BUT3 (Parcours A) à l'IUT de Lille. Salaire, coût de formation, planning et procédure : tout pour l'entreprise.">
+  <meta property="og:image" content="https://cal-matthieu.github.io/images/CALESSE-portraits-iut-info-354.jpg">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Matthieu Calesse — Alternance BUT3 Informatique 2026-2027">
+  <meta name="twitter:description" content="Développeur Full Stack en recherche d'alternance BUT3 (Parcours A) à l'IUT de Lille. Toutes les infos pratiques pour l'entreprise.">
+  <meta name="twitter:image" content="https://cal-matthieu.github.io/images/CALESSE-portraits-iut-info-354.jpg">
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
@@ -256,13 +268,19 @@
     }
 
     /* ─── SALAIRE ─── */
+    .salary-table-wrap {
+      overflow-x: auto;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 20px;
+    }
+
     .salary-table {
       width: 100%;
+      min-width: 620px;
       border-collapse: collapse;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      margin-bottom: 20px;
     }
 
     .salary-table th {
@@ -544,7 +562,6 @@
     .cal-dot.iut { background: #bfdbfe; border: 1px solid #93c5fd; }
     .cal-dot.enterprise { background: #1e3a8a; }
     .cal-dot.holiday { background: #bbf7d0; border: 1px solid #86efac; }
-    .cal-dot.event { background: #fde68a; border: 1px solid #fbbf24; }
 
     .cal-grid {
       display: grid;
@@ -1131,9 +1148,10 @@
       </div>
 
       <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:24px;line-height:1.7;">
-        La rémunération est fixée par la loi en pourcentage du SMIC, selon l'âge de l'apprenti et l'année de formation (BUT3 = 3ème année). Le SMIC brut mensuel est de <strong>1 823 €</strong> (janvier 2026). Le salaire est <strong>exonéré d'impôt sur le revenu</strong> dans la limite du SMIC.
+        La rémunération est fixée par la loi en pourcentage du SMIC, selon l'âge de l'apprenti et l'année de formation (BUT3 = 3ème année). Le SMIC brut mensuel est de <strong>1 867,02 €</strong> (revalorisé au 1er juin 2026 — source&nbsp;: service-public.fr). Le salaire est <strong>exonéré d'impôt sur le revenu</strong> dans la limite du SMIC.
       </p>
 
+      <div class="salary-table-wrap">
       <table class="salary-table" aria-label="Rémunération mensuelle selon l'âge — BUT3 3ème année">
         <thead>
           <tr>
@@ -1147,29 +1165,30 @@
           <tr>
             <td>Avant 18 ans</td>
             <td>55 %</td>
-            <td><span class="salary-amount">1 003 €</span></td>
+            <td><span class="salary-amount">1 027 €</span></td>
             <td style="color:var(--text-muted);font-size:0.82rem;">—</td>
           </tr>
           <tr class="highlighted">
             <td>
               <strong>18 – 20 ans</strong>
-              <span class="salary-tag tag-current"><i class="fas fa-circle" style="font-size:0.5rem;"></i> Sept 2026 → 1er mai 2027</span>
+              <span class="salary-tag tag-current"><i class="fas fa-circle" style="font-size:0.5rem;"></i> Août 2026 → 31 mai 2027</span>
             </td>
             <td><strong>67 %</strong></td>
-            <td><span class="salary-amount" style="color:#1d4ed8;">1 221 €</span></td>
+            <td><span class="salary-amount" style="color:#1d4ed8;">1 251 €</span></td>
             <td style="font-size:0.82rem;color:#1d4ed8;font-weight:600;">Matthieu a 20 ans à la rentrée</td>
           </tr>
           <tr class="highlighted-soon">
             <td>
               <strong>21 – 25 ans</strong>
-              <span class="salary-tag tag-soon">Dès le 2 mai 2027</span>
+              <span class="salary-tag tag-soon">Dès le 1er juin 2027</span>
             </td>
             <td><strong>78 %</strong></td>
-            <td><span class="salary-amount" style="color:#6d28d9;">1 422 €</span></td>
-            <td style="font-size:0.82rem;color:#6d28d9;font-weight:600;">Anniversaire 21 ans le 2 mai 2027</td>
+            <td><span class="salary-amount" style="color:#6d28d9;">1 456 €</span></td>
+            <td style="font-size:0.82rem;color:#6d28d9;font-weight:600;">21 ans le 2 mai 2027 — majoration au 1er du mois suivant (art. D6222-34)</td>
           </tr>
         </tbody>
       </table>
+      </div>
 
       <div class="salary-note" role="note">
         <i class="fas fa-info-circle"></i>
@@ -1231,7 +1250,7 @@
           <div class="planning-stat-label">an de formation</div>
         </div>
         <div class="planning-stat">
-          <div class="planning-stat-number" style="color:#15803d;">~75%</div>
+          <div class="planning-stat-number" style="color:#15803d;">~70%</div>
           <div class="planning-stat-label">du temps en entreprise</div>
         </div>
       </div>
@@ -1244,7 +1263,6 @@
         <div class="cal-legend-item"><div class="cal-dot enterprise"></div> Présence entreprise</div>
         <div class="cal-legend-item"><div class="cal-dot iut"></div> Présence IUT</div>
         <div class="cal-legend-item"><div class="cal-dot holiday"></div> Jour férié / Congé</div>
-        <div class="cal-legend-item"><div class="cal-dot event"></div> Événement clé</div>
       </div>
 
       <div class="cal-grid" id="cal-grid" aria-label="Calendrier d'alternance 2026-2027"></div>
@@ -1294,7 +1312,7 @@
           <div class="step-number">3</div>
           <div class="step-body">
             <div class="step-title">Signature du contrat d'apprentissage</div>
-            <p class="step-desc">Le contrat peut démarrer <strong>dès août 2026</strong>, au plus tard le <strong>30 novembre 2026</strong>. Il ne pourra pas être édité avant la confirmation de validation de la 2ème année de BUT (au plus tard le 1er juillet 2026).</p>
+            <p class="step-desc">Le contrat peut démarrer <strong>dès août 2026</strong>, au plus tard le <strong>30 novembre 2026</strong>. Il ne pourra pas être édité avant la confirmation de validation de la 2ème année de BUT — <strong>résultats en attente de publication par l'IUT</strong>.</p>
             <div class="step-detail">
               <strong>Date de démarrage :</strong> Dès août 2026 · Au plus tard : 30 novembre 2026<br>
               <strong>Durée du contrat :</strong> 1 an minimum (jusqu'à fin août 2027) · renouvellement possible si souhait mutuel
@@ -1541,19 +1559,19 @@
       '2026-11-11':'Armistice (férié)',
       '2026-12-25':'Noël (férié)',
       '2027-01-01':'Jour de l\'An (férié)',
-      '2027-01-25':'Soutenances *',
-      '2027-01-26':'Soutenances *',
+      '2027-01-25':'Soutenances',
+      '2027-01-26':'Soutenances',
       '2027-03-29':'Lundi de Pâques (férié)',
       '2027-05-01':'Fête du Travail (férié)',
       '2027-05-06':'Ascension (férié)',
       '2027-05-08':'Victoire 1945 (férié)',
       '2027-05-17':'Pentecôte (férié)',
-      '2027-06-17':'Soutenances *',
-      '2027-06-18':'Soutenances *',
+      '2027-06-17':'Soutenances',
+      '2027-06-18':'Soutenances',
       '2027-06-28':'Réunion MA/TP',
       '2027-07-14':'Fête Nationale (férié)',
       '2027-08-15':'Assomption (férié)',
-      '2027-08-31':'Rattrapages ** — Fin de formation'
+      '2027-08-31':'Rattrapages — Fin de formation'
     };
 
     const MONTHS_DEF = [
@@ -1565,8 +1583,8 @@
       {y:2027,m:2,  name:'Févr. 2027', note:'4 semaines IUT (dont 2 consécutives 15–26/02)'},
       {y:2027,m:3,  name:'Mars 2027',  note:'Lundi de Pâques 29/03'},
       {y:2027,m:4,  name:'Avr. 2027',  note:'Entreprise tout le mois'},
-      {y:2027,m:5,  name:'Mai 2027',   note:'4 jours fériés · <span class="ev">Matthieu fête ses 21 ans le 2 mai ↑ salaire</span>'},
-      {y:2027,m:6,  name:'Juin 2027',  note:'<span class="ev">Soutenances 17–18 · Réunion MA/TP 28</span>'},
+      {y:2027,m:5,  name:'Mai 2027',   note:'4 jours fériés · <span class="ev">Matthieu fête ses 21 ans le 2 mai</span>'},
+      {y:2027,m:6,  name:'Juin 2027',  note:'<span class="ev">Salaire ↑ 78 % au 1er juin · Soutenances 17–18 · Réunion MA/TP 28</span>'},
       {y:2027,m:7,  name:'Juil. 2027', note:'Fête nationale 14/07'},
       {y:2027,m:8,  name:'Août 2027',  note:'Assomption 15/08 · <span class="ev">Fin de formation 31/08</span>'}
     ];
