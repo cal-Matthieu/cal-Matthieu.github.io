@@ -10,6 +10,7 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,24 +21,8 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --sidebar-bg: #0f172a;
-      --sidebar-border: rgba(255,255,255,0.06);
-      --accent: #3b82f6;
-      --accent-dark: #1d4ed8;
-      --accent-light: #dbeafe;
-      --accent-dim: rgba(59,130,246,0.08);
-      --content-bg: #f8fafc;
-      --section-white: #ffffff;
-      --text: #0f172a;
-      --text-muted: #64748b;
-      --border: #e2e8f0;
-      --shadow-sm: 0 2px 8px rgba(15,23,42,0.07);
-      --shadow-md: 0 6px 24px rgba(15,23,42,0.1);
-      --sidebar-width: 360px;
-      --ease: 0.2s ease;
       --green: #22c55e;
       --green-dim: rgba(34,197,94,0.1);
       --green-border: rgba(34,197,94,0.3);
@@ -45,226 +30,13 @@
       --amber-dim: rgba(245,158,11,0.1);
     }
 
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--content-bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    /* ─── SIDEBAR ─── */
-    .sidebar {
-      position: fixed;
-      top: 0; left: 0;
-      width: var(--sidebar-width);
-      height: 100vh;
-      background: var(--sidebar-bg);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      z-index: 50;
-    }
-
-    .sidebar::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
-      background-size: 24px 24px;
-      pointer-events: none;
-    }
-
-    .sidebar::after {
-      content: '';
-      position: absolute;
-      top: -100px; left: -80px;
-      width: 320px; height: 320px;
-      background: radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .sidebar-inner {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      padding: 48px 36px;
-    }
-
-    .profile {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 36px;
-    }
-
-    .profile-photo-wrap {
-      position: relative;
-      width: 96px; height: 96px;
-      margin-bottom: 16px;
-    }
-
-    .profile-photo {
-      width: 96px; height: 96px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center top;
-      border: 3px solid rgba(59,130,246,0.6);
-      display: block;
-    }
-
-    .profile-photo-ring {
-      position: absolute;
-      inset: -5px;
-      border-radius: 50%;
-      border: 2px dashed rgba(59,130,246,0.25);
-      animation: spin 18s linear infinite;
-    }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .profile-status {
-      position: absolute;
-      bottom: 4px; right: 4px;
-      width: 14px; height: 14px;
-      background: #22c55e;
-      border-radius: 50%;
-      border: 2px solid var(--sidebar-bg);
-    }
-
-    .profile-name {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #f1f5f9;
-      text-align: center;
-      letter-spacing: -0.5px;
-      margin-bottom: 6px;
-    }
-
+    /* Cette page utilise un thème vert pour le badge de rôle, au lieu
+       du bleu par défaut défini dans style.css */
     .profile-role {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
       background: rgba(34,197,94,0.12);
-      border: 1px solid rgba(34,197,94,0.3);
+      border-color: rgba(34,197,94,0.3);
       color: #86efac;
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin-bottom: 14px;
     }
-
-    .profile-bio {
-      font-size: 0.82rem;
-      color: #64748b;
-      text-align: center;
-      line-height: 1.7;
-      max-width: 240px;
-    }
-
-    .sidebar-nav { list-style: none; flex: 1; }
-    .sidebar-nav li { margin-bottom: 2px; }
-
-    .sidebar-nav a {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 14px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: #64748b;
-      transition: all var(--ease);
-    }
-
-    .sidebar-nav a .nav-icon {
-      width: 32px; height: 32px;
-      background: rgba(255,255,255,0.04);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      flex-shrink: 0;
-      transition: all var(--ease);
-    }
-
-    .sidebar-nav a:hover,
-    .sidebar-nav a.active { background: rgba(255,255,255,0.05); color: #f1f5f9; }
-
-    .sidebar-nav a:hover .nav-icon,
-    .sidebar-nav a.active .nav-icon { background: rgba(59,130,246,0.2); color: #93c5fd; }
-
-    .sidebar-nav a.active .nav-icon { color: var(--accent); }
-
-    .nav-divider {
-      height: 1px;
-      background: var(--sidebar-border);
-      margin: 10px 0;
-    }
-
-    .nav-label {
-      font-size: 0.68rem;
-      font-weight: 600;
-      color: #334155;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      padding: 0 14px;
-      margin-bottom: 6px;
-    }
-
-    .sidebar-bottom { padding-top: 24px; border-top: 1px solid var(--sidebar-border); }
-
-    .social-row { display: flex; gap: 10px; margin-bottom: 16px; }
-
-    .social-btn {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 36px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--sidebar-border);
-      border-radius: 8px;
-      color: #64748b;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: all var(--ease);
-    }
-
-    .social-btn:hover {
-      background: rgba(59,130,246,0.15);
-      border-color: rgba(59,130,246,0.3);
-      color: #93c5fd;
-    }
-
-    .btn-cv {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      padding: 11px;
-      background: var(--accent);
-      color: #fff;
-      border-radius: 8px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background var(--ease);
-    }
-
-    .btn-cv:hover { background: var(--accent-dark); }
-
-    /* ─── LAYOUT ─── */
-    .main { margin-left: var(--sidebar-width); min-height: 100vh; }
 
     .section-wrap {
       padding: 80px 72px;
@@ -692,7 +464,7 @@
 
     .mcd.iut    { background: #bfdbfe; color: #1e40af; }
     .mcd.ent    { background: #1e3a8a; color: #e2e8f0; }
-    .mcd.we     { background: #f1f5f9; color: #94a3b8; }
+    .mcd.we     { background: #f1f5f9; color: #55606f; }
     .mcd.ferie  { background: #bbf7d0; color: #14532d; }
     .mcd.empty  { background: transparent; }
 
@@ -704,7 +476,7 @@
       line-height: 1.5;
     }
 
-    .mini-cal-note .ev { color: #d97706; font-weight: 600; }
+    .mini-cal-note .ev { color: #b45309; font-weight: 600; }
 
     .cal-disclaimer {
       font-size: 0.78rem;
@@ -978,18 +750,6 @@
 
     .contact-item-value a:hover { text-decoration: underline; }
 
-    .iut-note {
-      background: rgba(255,255,255,0.7);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 16px 20px;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 8px;
-    }
-
-    .iut-note strong { color: var(--text); }
-
     /* ─── FOOTER ─── */
     .footer {
       background: var(--sidebar-bg);
@@ -1053,22 +813,6 @@
     .footer-link:hover { color: #3b82f6; }
 
     /* ─── MOBILE ─── */
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 56px;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      z-index: 100;
-      padding: 0 20px;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .mobile-nav-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--text); }
-
     @media (max-width: 960px) {
       .sidebar { display: none; }
       .mobile-nav { display: flex; }
@@ -1146,7 +890,7 @@
       display: inline-block;
       font-size: 0.65rem;
       font-weight: 700;
-      background: #16a34a;
+      background: #15803d;
       color: #fff;
       padding: 1px 5px;
       border-radius: 3px;
@@ -1294,7 +1038,7 @@
         </div>
         <div class="info-card">
           <div class="info-card-label">Disponibilité</div>
-          <div class="info-card-value" style="color:#16a34a;">Dès août 2026</div>
+          <div class="info-card-value" style="color:#15803d;">Dès août 2026</div>
           <div class="info-card-sub">1 an minimum · renouvellement souhaité si l'entreprise le propose</div>
         </div>
       </div>
@@ -1628,10 +1372,12 @@
             </div>
           </div>
 
-          <div class="iut-note">
-            <strong>IUT de Lille — Département Informatique</strong><br>
-            Site de Villeneuve-d'Ascq · Université de Lille<br>
-            <a href="https://iut.univ-lille.fr/les-departements/departement-informatique" target="_blank" rel="noopener noreferrer" style="color:var(--accent-dark);font-size:0.78rem;">iut.univ-lille.fr/departement-informatique</a>
+          <div class="contact-item" style="border-bottom:none;">
+            <div class="contact-icon"><i class="fas fa-university" aria-hidden="true"></i></div>
+            <div>
+              <div class="contact-item-label">IUT de Lille — Département Informatique</div>
+              <div class="contact-item-value" style="font-weight:400;">Site de Villeneuve-d'Ascq · Université de Lille<br><a href="https://iut.univ-lille.fr/les-departements/departement-informatique" target="_blank" rel="noopener noreferrer">iut.univ-lille.fr/departement-informatique</a></div>
+            </div>
           </div>
         </div>
       </div>

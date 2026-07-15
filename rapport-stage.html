@@ -7,6 +7,7 @@
   <meta name="description" content="Rapport de stage de Matthieu Calesse chez MAPAP (Avr–Juin 2026) — Validation logiciel, support client et documentation technique. BUT Informatique, IUT de Lille.">
   <link rel="canonical" href="https://cal-matthieu.github.io/rapport-stage.html">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,73 +17,11 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --sidebar-bg: #0f172a;
-      --sidebar-border: rgba(255,255,255,0.06);
-      --accent: #3b82f6;
-      --accent-dark: #1d4ed8;
-      --accent-light: #dbeafe;
-      --accent-dim: rgba(59,130,246,0.08);
-      --content-bg: #f8fafc;
-      --section-white: #ffffff;
-      --text: #0f172a;
-      --text-muted: #64748b;
-      --border: #e2e8f0;
-      --shadow-sm: 0 2px 8px rgba(15,23,42,0.07);
-      --shadow-md: 0 6px 24px rgba(15,23,42,0.1);
-      --ease: 0.2s ease;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--content-bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    /* ── Topbar ── */
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--sidebar-bg);
-      border-bottom: 1px solid var(--sidebar-border);
-      padding: 0 48px;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .topbar-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: #64748b;
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 500;
-      transition: color var(--ease);
-    }
-    .topbar-back:hover { color: #f1f5f9; }
-
-    .topbar-name {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #f1f5f9;
-    }
-
     .topbar-download {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      color: #64748b;
+      color: #94a3b8;
       font-size: 0.82rem;
       font-weight: 500;
       text-decoration: none;
@@ -296,7 +235,7 @@
       white-space: nowrap;
     }
     .pdf-tab:hover { color: var(--text); }
-    .pdf-tab.active { color: var(--accent); border-bottom-color: var(--accent); background: #fff; }
+    .pdf-tab.active { color: var(--accent-dark); border-bottom-color: var(--accent); background: #fff; }
 
     .pdf-toolbar {
       background: #fff;
@@ -323,7 +262,7 @@
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      background: var(--accent);
+      background: var(--accent-dark);
       color: #fff;
       padding: 8px 16px;
       border-radius: 8px;
@@ -333,7 +272,7 @@
       transition: background var(--ease), transform var(--ease);
       white-space: nowrap;
     }
-    .pdf-download-btn:hover { background: var(--accent-dark); transform: translateY(-1px); }
+    .pdf-download-btn:hover { background: #1e3a8a; transform: translateY(-1px); }
 
     .pdf-frames-wrap {
       position: relative;
@@ -371,7 +310,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--accent);
+      background: var(--accent-dark);
       color: #fff;
       padding: 12px 24px;
       border-radius: 8px;
@@ -380,7 +319,7 @@
       text-decoration: none;
       transition: background var(--ease), transform var(--ease);
     }
-    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+    .btn-primary:hover { background: #1e3a8a; transform: translateY(-1px); }
 
     .btn-outline {
       display: inline-flex;
@@ -396,31 +335,6 @@
       transition: all var(--ease);
     }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
-
-    /* ── Footer ── */
-    footer {
-      background: var(--sidebar-bg);
-      padding: 32px 80px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-    }
-    footer::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 24px 24px;
-      pointer-events: none;
-    }
-    .footer-left { position: relative; z-index: 1; }
-    .footer-name { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #f1f5f9; margin-bottom: 2px; }
-    .footer-copy { font-size: 0.72rem; color: #475569; }
-    .footer-right { position: relative; z-index: 1; display: flex; gap: 12px; align-items: center; }
-    .footer-link { color: #475569; font-size: 1rem; text-decoration: none; transition: color var(--ease); }
-    .footer-link:hover { color: #3b82f6; }
 
     /* ── Responsive ── */
     @media (max-width: 768px) {
@@ -541,10 +455,10 @@
 
       <div class="pdf-wrap">
         <div class="pdf-tabs" role="tablist" aria-label="Documents du stage">
-          <button class="pdf-tab active" role="tab" aria-selected="true" aria-controls="pdf-viewer" data-src="doc/rapport-stage.pdf" data-filename="Rapport_Stage_Matthieu_Calesse_MAPAP.pdf" data-label="Rapport de stage">
+          <button class="pdf-tab active" role="tab" aria-selected="true" aria-controls="pdf-rapport" data-src="doc/rapport-stage.pdf" data-filename="Rapport_Stage_Matthieu_Calesse_MAPAP.pdf" data-label="Rapport de stage">
             <i class="fas fa-file-pdf" aria-hidden="true"></i> Rapport de stage
           </button>
-          <button class="pdf-tab" role="tab" aria-selected="false" aria-controls="pdf-viewer" data-src="doc/glossaire.pdf" data-filename="Glossaire_Stage_MAPAP.pdf" data-label="Glossaire">
+          <button class="pdf-tab" role="tab" aria-selected="false" aria-controls="pdf-glossaire" data-src="doc/glossaire.pdf" data-filename="Glossaire_Stage_MAPAP.pdf" data-label="Glossaire">
             <i class="fas fa-book" aria-hidden="true"></i> Glossaire
           </button>
         </div>
