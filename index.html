@@ -7,8 +7,8 @@
   <!-- SEO -->
   <meta name="google-site-verification" content="qJPfq9SnnTP_v7-9clJBIypsTPFIBG0LjUOSXHfTbuQ">
   <title>Matthieu Calesse — Développeur Full Stack à Lille</title>
-  <meta name="description" content="Portfolio de Matthieu Calesse, développeur Full Stack étudiant en BUT Informatique à Lille. TypeScript, Java, Node.js, API REST. En recherche d'alternance BUT3 pour 2026-2027.">
-  <meta name="keywords" content="développeur web Lille, développeur full stack, portfolio, BUT informatique, TypeScript, Java, Node.js">
+  <meta name="description" content="Portfolio de Matthieu Calesse, développeur Full Stack étudiant en BUT Informatique à Lille. Java, TypeScript, Python, API REST. En recherche d'un stage de 12 à 16 semaines à partir du 15 mars 2027, partout en France.">
+  <meta name="keywords" content="stage développeur, développeur web Lille, développeur full stack, portfolio, BUT informatique, Java, TypeScript, Python, Node.js">
   <meta name="author" content="Matthieu Calesse">
   <link rel="canonical" href="https://cal-matthieu.github.io/">
 
@@ -16,7 +16,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://cal-matthieu.github.io/">
   <meta property="og:title" content="Matthieu Calesse — Développeur Full Stack à Lille">
-  <meta property="og:description" content="Portfolio de Matthieu Calesse, développeur Full Stack étudiant en BUT Informatique à Lille. TypeScript, Java, Node.js, API REST.">
+  <meta property="og:description" content="Portfolio de Matthieu Calesse, développeur Full Stack étudiant en BUT Informatique à Lille, en recherche d'un stage à partir du 15 mars 2027.">
   <meta property="og:image" content="https://cal-matthieu.github.io/images/CALESSE-portraits-iut-info-354.jpg">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="Matthieu Calesse — Portfolio">
@@ -24,7 +24,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Matthieu Calesse — Développeur Full Stack à Lille">
-  <meta name="twitter:description" content="Portfolio de Matthieu Calesse, développeur Full Stack étudiant en BUT Informatique à Lille.">
+  <meta name="twitter:description" content="Portfolio de Matthieu Calesse, développeur Full Stack étudiant en BUT Informatique à Lille, en recherche d'un stage à partir du 15 mars 2027.">
   <meta name="twitter:image" content="https://cal-matthieu.github.io/images/CALESSE-portraits-iut-info-354.jpg">
 
   <!-- JSON-LD structured data -->
@@ -36,11 +36,11 @@
     "url": "https://cal-matthieu.github.io/",
     "image": "https://cal-matthieu.github.io/images/CALESSE-portraits-iut-info-354.jpg",
     "jobTitle": "Développeur Full Stack",
-    "description": "Étudiant en BUT Informatique à l'IUT de Lille, développeur Full Stack spécialisé en TypeScript, Java et Node.js.",
-    "email": "calmatthieu@yahoo.com",
+    "description": "Étudiant en BUT Informatique à l'IUT de Lille, développeur Full Stack en Java, TypeScript et Python, en recherche d'un stage à partir du 15 mars 2027.",
+    "email": "matthieucalesse@gmail.com",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Villeneuve-d'Ascq",
+      "addressLocality": "Lille",
       "addressRegion": "Nord",
       "addressCountry": "FR"
     },
@@ -48,7 +48,7 @@
       "https://github.com/cal-Matthieu",
       "https://www.linkedin.com/in/matthieu-calesse/"
     ],
-    "knowsAbout": ["TypeScript", "JavaScript", "Java", "Node.js", "API REST", "HTML", "CSS", "PostgreSQL", "Socket.io", "Next.js"]
+    "knowsAbout": ["Java", "TypeScript", "JavaScript", "Python", "Node.js", "API REST", "HTML", "CSS", "PostgreSQL", "Socket.io", "Next.js", "Docker", "n8n"]
   }
   </script>
 
@@ -203,7 +203,7 @@
       transform: translateY(-1px);
     }
 
-    .alternance-cta {
+    .stage-cta {
       display: inline-flex;
       align-items: center;
       gap: 12px;
@@ -217,12 +217,12 @@
       max-width: fit-content;
     }
 
-    .alternance-cta:hover {
+    .stage-cta:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 26px rgba(34,197,94,0.5);
     }
 
-    .alternance-cta .cta-dot {
+    .stage-cta .cta-dot {
       width: 8px; height: 8px;
       background: #fff;
       border-radius: 50%;
@@ -230,7 +230,7 @@
       flex-shrink: 0;
     }
 
-    .alternance-cta .cta-label {
+    .stage-cta .cta-label {
       color: #fff;
       font-size: 0.8rem;
       font-weight: 700;
@@ -238,7 +238,7 @@
       letter-spacing: 0.6px;
     }
 
-    .alternance-cta .cta-arrow {
+    .stage-cta .cta-arrow {
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -440,7 +440,25 @@
       font-weight: 500;
     }
 
-    .project-list { display: flex; flex-direction: column; gap: 16px; }
+    .project-group-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 36px 0 4px;
+    }
+
+    .project-group-title:first-of-type { margin-top: 0; }
+    .project-group-note { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.6; }
+
+    .project-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .project-meta { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px; }
 
     .project-card {
       background: var(--section-white);
@@ -456,6 +474,7 @@
     .project-card:hover { box-shadow: var(--shadow-md); border-color: #bfdbfe; transform: translateY(-2px); }
 
     .browser-frame {
+      min-height: 65px;
       background: #f1f5f9;
       border-bottom: 1px solid var(--border);
       padding: 10px 14px;
@@ -671,7 +690,7 @@
 
   <nav class="mobile-nav" aria-label="Navigation mobile">
     <span class="mobile-nav-name">Matthieu Calesse</span>
-    <a href="mailto:calmatthieu@yahoo.com" style="color:var(--accent)" aria-label="Envoyer un email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+    <a href="mailto:matthieucalesse@gmail.com" style="color:var(--accent)" aria-label="Envoyer un email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
   </nav>
 
   <aside class="sidebar" aria-label="Navigation principale">
@@ -680,14 +699,14 @@
         <div class="profile-photo-wrap">
           <img src="images/profile.webp" alt="Photo de profil de Matthieu Calesse" class="profile-photo" width="96" height="96">
           <div class="profile-photo-ring" aria-hidden="true"></div>
-          <div class="profile-status" title="Disponible" aria-label="Disponible"></div>
+          <div class="profile-status" role="img" title="En recherche de stage" aria-label="En recherche de stage"></div>
         </div>
         <div class="profile-name">Matthieu Calesse</div>
         <div class="profile-role">
           <svg width="7" height="7" aria-hidden="true"><circle cx="3.5" cy="3.5" r="3.5" fill="#22c55e"/></svg>
           Full Stack · BUT Info
         </div>
-        <p class="profile-bio">Étudiant en 3ème année à l'IUT de Lille. Du backend robuste à l'interface soignée.</p>
+        <p class="profile-bio">Étudiant en 3e année à l'IUT de Lille. Stage à partir du 15 mars 2027.</p>
       </div>
 
       <ul class="sidebar-nav">
@@ -698,13 +717,14 @@
         <li><a href="#projets"><span class="nav-icon"><i class="fas fa-rocket" aria-hidden="true"></i></span>Projets</a></li>
         <li><a href="#competences"><span class="nav-icon"><i class="fas fa-code" aria-hidden="true"></i></span>Compétences</a></li>
         <li><a href="#contact"><span class="nav-icon"><i class="fas fa-paper-plane" aria-hidden="true"></i></span>Contact</a></li>
+        <li><a href="stage.html"><span class="nav-icon"><i class="fas fa-bullseye" aria-hidden="true"></i></span>Recherche de stage</a></li>
       </ul>
 
       <div class="sidebar-bottom">
         <div class="social-row">
           <a href="https://github.com/cal-Matthieu" target="_blank" rel="noopener noreferrer" class="social-btn" title="GitHub" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
           <a href="https://www.linkedin.com/in/matthieu-calesse/" target="_blank" rel="noopener noreferrer" class="social-btn" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
-          <a href="mailto:calmatthieu@yahoo.com" class="social-btn" title="Email" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+          <a href="mailto:matthieucalesse@gmail.com" class="social-btn" title="Email" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
         </div>
         <a href="doc/cv.pdf" download="CV_Matthieu_Calesse.pdf" class="btn-cv">
           <i class="fas fa-download" aria-hidden="true"></i> Télécharger le CV
@@ -719,15 +739,16 @@
       <div class="hero-content">
         <div class="hero-greeting">Développeur Full Stack</div>
         <h1 class="hero-title">Je conçois des applications<br><span>de A à Z.</span></h1>
-        <p class="hero-sub">Du backend robuste à l'interface soignée — API REST, jeux en réseau, sites web modernes. Étudiant en BUT Informatique à Lille, en recherche d'alternance pour 2026-2027.</p>
+        <p class="hero-sub">Du backend robuste à l'interface soignée — API REST, jeux en réseau, sites web modernes, automatisation. Étudiant en BUT Informatique à Lille, je cherche un stage de 12 à 16 semaines à partir du 15 mars 2027, partout en France.</p>
         <div class="hero-actions">
           <a href="#projets" class="hero-btn-primary"><i class="fas fa-rocket" aria-hidden="true"></i> Voir mes projets</a>
+          <a href="doc/cv.pdf" download="CV_Matthieu_Calesse.pdf" class="hero-btn-outline"><i class="fas fa-download" aria-hidden="true"></i> Télécharger le CV</a>
           <a href="#contact" class="hero-btn-outline"><i class="fas fa-paper-plane" aria-hidden="true"></i> Me contacter</a>
         </div>
 
-        <a href="alternance.html" class="alternance-cta">
+        <a href="stage.html" class="stage-cta">
           <span class="cta-dot" aria-hidden="true"></span>
-          <span class="cta-label">En recherche d'alternance BUT3 · Dès septembre 2026</span>
+          <span class="cta-label">Stage de 12 à 16 semaines · Dès le 15 mars 2027</span>
           <span class="cta-arrow">Infos entreprise <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
         </a>
       </div>
@@ -743,13 +764,17 @@
 
       <div class="about-grid">
         <div class="about-text">
-          <p>Étudiant en <strong>BUT Informatique</strong> à l'IUT de Lille, je conçois des applications web complètes avec un intérêt marqué pour les <strong>systèmes réseau</strong>, l'IA et les données.</p>
-          <p>Mes projets académiques m'ont amené à construire un jeu multijoueur temps réel, une API REST en architecture couches, et des applications Java complexes — en équipe comme en solo.</p>
+          <p>Étudiant en <strong>BUT Informatique</strong> à l'IUT de Lille, je conçois des applications web complètes. Je me passionne pour l'<strong>informatique</strong>, la <strong>finance</strong>, les <strong>données</strong> et l'<strong>IA</strong>.</p>
+          <p>Mes projets académiques m'ont amené à construire un jeu multijoueur temps réel, une API REST en architecture couches, et des applications Java complexes — en équipe comme en solo. Cette année, j'y découvre Rust avec un émulateur de processeur RISC-V.</p>
+          <p>En dehors des cours, je développe seul mes propres outils avec <strong>Claude Code</strong>, une IA de développement : le site d'une association, un scanner de marchés, un bot Discord, un tableau de bord et des automatisations n8n.</p>
           <p>Curieux, rigoureux et autonome. Je cherche à comprendre comment les systèmes fonctionnent, pas juste à faire marcher le code.</p>
           <div class="about-tags">
             <span class="about-tag">🎓 BUT Info 2027</span>
-            <span class="about-tag">📍 Villeneuve-d'Ascq</span>
-            <span class="about-tag">🚀 Open to work</span>
+            <span class="about-tag">📍 Lille · mobile dans toute la France</span>
+            <span class="about-tag">🚀 Stage dès le 15 mars 2027</span>
+            <span class="about-tag">📈 Finance</span>
+            <span class="about-tag">📊 Données</span>
+            <span class="about-tag">🤖 IA</span>
           </div>
         </div>
 
@@ -834,8 +859,8 @@
         <div class="tl-item">
           <span class="tl-date">2024 — 2027</span>
           <div class="tl-title">BUT Informatique</div>
-          <div class="tl-sub">IUT de Lille, Villeneuve-d'Ascq · 3ème année en alternance 2026-2027</div>
-          <div class="tl-desc">Développement d'applications, programmation orientée objet, bases de données, réseaux, méthodes agiles.</div>
+          <div class="tl-sub">IUT de Lille, Villeneuve-d'Ascq · 3e année en 2026-2027, parcours A, développement d'applications</div>
+          <div class="tl-desc">Développement d'applications, programmation orientée objet, bases de données, réseaux, méthodes agiles. En 3e année : intégration continue, virtualisation, qualité de développement, frameworks web, nouveaux paradigmes de bases de données, Rust.</div>
         </div>
         <div class="tl-item">
           <span class="tl-date">2024</span>
@@ -862,14 +887,14 @@
         <article class="exp-card">
           <div class="exp-header">
             <div>
-              <div class="exp-title">Stage — Validation Logiciel &amp; Support Client</div>
-              <div class="exp-company">MAPAP · Avr – Juin 2026</div>
+              <div class="exp-title">Stage — Validation logicielle &amp; support client</div>
+              <div class="exp-company">MAPAP, Lille · Avr – Juin 2026 (10 semaines)</div>
             </div>
             <span class="exp-date">2026</span>
           </div>
-          <p class="exp-desc">Analyse, conception technique, réalisation, tests de validation, exploitation et maintenance d'une solution informatique. Rédaction de documents techniques.</p>
+          <p class="exp-desc">Correction de bugs en WLangage et HFSQL sur Magsiwin, logiciel de caisse présent dans des centaines de magasins. Rédaction et exécution des trames de test de l'équipe, support de niveau 1, évolutions pour des clients (dossiers Refashion, fichier CSV, QR codes de tickets), tableaux de bord Odoo et documentation technique.</p>
           <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:12px;">
-            <div class="tags"><span class="tag">Magsiwin</span><span class="tag">HFSQL</span><span class="tag">Odoo</span><span class="tag">Documentation</span></div>
+            <div class="tags"><span class="tag">WinDev</span><span class="tag">WLangage</span><span class="tag">HFSQL</span><span class="tag">Odoo</span><span class="tag">Tests</span><span class="tag">Support client</span><span class="tag">Documentation</span></div>
             <a href="rapport-stage.html" style="display:inline-flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:600;color:var(--accent-dark);text-decoration:none;background:var(--accent-dim);border:1px solid #bfdbfe;padding:5px 13px;border-radius:6px;transition:all var(--ease);white-space:nowrap;" onmouseover="this.style.background='var(--accent)';this.style.color='#fff';this.style.borderColor='var(--accent)';" onmouseout="this.style.background='var(--accent-dim)';this.style.color='var(--accent-dark)';this.style.borderColor='#bfdbfe';">
               <i class="fas fa-file-pdf" aria-hidden="true"></i> Voir le rapport
             </a>
@@ -879,7 +904,7 @@
           <div class="exp-header">
             <div>
               <div class="exp-title">Équipier polyvalent</div>
-              <div class="exp-company">McDonald's · Juil – Août 2025</div>
+              <div class="exp-company">McDonald's, Aire-sur-la-Lys · Juil – Août 2025</div>
             </div>
             <span class="exp-date">2025</span>
           </div>
@@ -918,7 +943,93 @@
         <h2 class="section-title" id="projets-title">Projets</h2>
         <div class="section-line"></div>
       </div>
+      <h3 class="project-group-title">Projets personnels</h3>
+      <p class="project-group-note">Développés avec Claude Code (IA de développement).</p>
       <div class="project-list">
+
+        <article class="project-card">
+          <div class="browser-frame">
+            <div class="browser-dots"><div class="browser-dot bd-r"></div><div class="browser-dot bd-y"></div><div class="browser-dot bd-g"></div></div>
+            <div class="browser-bar"><i class="fas fa-lock" aria-hidden="true"></i>Mise en ligne à venir</div>
+          </div>
+          <div class="project-body">
+            <h4 class="project-title">Site web d'une association de musique</h4>
+            <p class="project-meta">Oct. 2026 – en cours · seul sur le projet</p>
+            <p class="project-desc">Site vitrine réalisé gratuitement pour une association : besoin recueilli par questionnaire, maquette réécrite en huit pages statiques, version mobile, galerie de 264 photos retenues parmi 11 490 images, formulaire de contact protégé contre les robots. En cours de finalisation, mise en ligne dans les prochaines semaines.</p>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Design web</span><span class="tag">Recueil du besoin</span></div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="browser-frame">
+            <div class="browser-dots"><div class="browser-dot bd-r"></div><div class="browser-dot bd-y"></div><div class="browser-dot bd-g"></div></div>
+            <div class="browser-bar"><i class="fas fa-lock" aria-hidden="true"></i>Code non publié</div>
+          </div>
+          <div class="project-body">
+            <h4 class="project-title">Scanner d'alertes et banc de backtests</h4>
+            <p class="project-meta">Sept. 2026 – en cours · seul sur le projet</p>
+            <p class="project-desc">Outil personnel qui collecte les cours de 138 actions américaines et de 272 cryptomonnaies (0 divergence sur 27 169 heures contrôlées), avec un moteur d'alertes Telegram testé en production. Banc de backtests : 265 familles de stratégies testées avec des agents d'IA, période de test scellée et contrôle contre le hasard. Aucune stratégie de prix validée à ce jour.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">Docker</span><span class="tag">PostgreSQL</span><span class="tag">TimescaleDB</span><span class="tag">FastAPI</span><span class="tag">Backtesting</span></div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="browser-frame">
+            <div class="browser-dots"><div class="browser-dot bd-r"></div><div class="browser-dot bd-y"></div><div class="browser-dot bd-g"></div></div>
+            <div class="browser-bar"><i class="fas fa-lock" aria-hidden="true"></i>Code non publié</div>
+          </div>
+          <div class="project-body">
+            <h4 class="project-title">Bot Discord de disponibilités</h4>
+            <p class="project-meta">Juil. – oct. 2026 · seul sur le projet</p>
+            <p class="project-desc">Bot qui remplace les relances manuelles d'un clan de jeu vidéo : formulaire à boutons envoyé à heure fixe, réponses regroupées dans un seul message, clôture automatique. API Flask, tests automatisés et surveillance quotidienne par n8n. A servi sur le serveur du clan.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">discord.py</span><span class="tag">SQLite</span><span class="tag">Flask</span><span class="tag">n8n</span><span class="tag">Tests</span></div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="browser-frame">
+            <div class="browser-dots"><div class="browser-dot bd-r"></div><div class="browser-dot bd-y"></div><div class="browser-dot bd-g"></div></div>
+            <div class="browser-bar"><i class="fas fa-lock" aria-hidden="true"></i>Code non publié</div>
+          </div>
+          <div class="project-body">
+            <h4 class="project-title">Tableau de bord personnel et automatisations</h4>
+            <p class="project-meta">Juin 2026 – en cours · seul sur le projet</p>
+            <p class="project-desc">Application locale en service : chat avec Claude, veille, agenda, suivi boursier et bot Telegram. Six workflows n8n actifs pour la veille, les mails, le planning et la supervision.</p>
+            <div class="tags"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">n8n</span><span class="tag">PM2</span><span class="tag">Telegram</span></div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="browser-frame">
+            <div class="browser-dots"><div class="browser-dot bd-r"></div><div class="browser-dot bd-y"></div><div class="browser-dot bd-g"></div></div>
+            <div class="browser-bar"><i class="fas fa-lock" aria-hidden="true"></i>Code non publié</div>
+          </div>
+          <div class="project-body">
+            <h4 class="project-title">Modèle de langue entraîné de zéro</h4>
+            <p class="project-meta">Oct. 2026 · seul sur le projet</p>
+            <p class="project-desc">Transformer entraîné sur CPU pour répondre par oui ou non à des questions en français. Précision de 0,85 sur les formulations vues à l'entraînement et de 0,55 sur des paraphrases, pour 0,5 au hasard : la limite de généralisation est mesurée.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">Transformer</span><span class="tag">Évaluation</span></div>
+          </div>
+        </article>
+
+      </div>
+
+      <h3 class="project-group-title">Projets à l'IUT</h3>
+      <p class="project-group-note">Réalisés dans le cadre du BUT Informatique.</p>
+      <div class="project-list">
+
+        <article class="project-card">
+          <div class="browser-frame">
+            <div class="browser-dots"><div class="browser-dot bd-r"></div><div class="browser-dot bd-y"></div><div class="browser-dot bd-g"></div></div>
+            <div class="browser-bar"><i class="fas fa-lock" aria-hidden="true"></i>Code non publié</div>
+          </div>
+          <div class="project-body">
+            <h4 class="project-title">Émulateur de processeur RISC-V</h4>
+            <p class="project-meta">SAE de 3e année · en binôme · en cours</p>
+            <p class="project-desc">Décodage et exécution des instructions RV32I et gestion de la mémoire, en Rust.</p>
+            <div class="tags"><span class="tag">Rust</span><span class="tag">RISC-V</span><span class="tag">Architecture des processeurs</span></div>
+          </div>
+        </article>
 
         <article class="project-card">
           <div class="browser-frame">
@@ -930,7 +1041,8 @@
             </div>
           </div>
           <div class="project-body">
-            <h3 class="project-title">SAE JS — Shoot'em up multijoueur temps réel</h3>
+            <h4 class="project-title">SAE JS — Shoot'em up multijoueur temps réel</h4>
+            <p class="project-meta">Févr. – avr. 2026</p>
             <p class="project-desc">Jeu multijoueur (1–4 joueurs) avec synchronisation temps réel via Socket.io. Contrôles fluides, ennemis dynamiques, bonus variés et classement JSON persisté.</p>
             <div class="tags"><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">Socket.io</span><span class="tag">Multijoueur</span><span class="tag">Client–serveur</span><span class="tag">Réseau</span></div>
           </div>
@@ -946,7 +1058,8 @@
             </div>
           </div>
           <div class="project-body">
-            <h3 class="project-title">EcoDrop — API REST</h3>
+            <h4 class="project-title">EcoDrop — API REST</h4>
+            <p class="project-meta">Mars 2026 · SAE 2.01</p>
             <p class="project-desc">API REST en architecture couches (Servlets → DAO → JDBC → PostgreSQL) pour la gestion écologique de déchets. Auth token, CRUD complet, leaderboard et alertes de surcharge.</p>
             <div class="tags"><span class="tag">Java</span><span class="tag">PostgreSQL</span><span class="tag">Jakarta Servlet</span><span class="tag">API REST</span><span class="tag">Pattern DAO</span></div>
           </div>
@@ -959,7 +1072,7 @@
             <div class="browser-actions"><a href="https://github.com/cal-Matthieu/Chesschool" target="_blank" rel="noopener noreferrer" title="Voir le code sur GitHub" aria-label="Jeu d'échecs — voir sur GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></div>
           </div>
           <div class="project-body">
-            <h3 class="project-title">Jeu d'échecs avec IA</h3>
+            <h4 class="project-title">Jeu d'échecs avec IA</h4>
             <p class="project-desc">Interface graphique MVC avec gestion complète des règles et IA simple intégrée pour jouer contre l'ordinateur.</p>
             <div class="tags"><span class="tag">Java</span><span class="tag">MVC</span><span class="tag">IA</span><span class="tag">Algorithmique</span></div>
           </div>
@@ -972,7 +1085,7 @@
             <div class="browser-actions"><a href="https://github.com/cal-Matthieu/groupe-3-main" target="_blank" rel="noopener noreferrer" title="Voir le code sur GitHub" aria-label="Tetris — voir sur GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></div>
           </div>
           <div class="project-body">
-            <h3 class="project-title">Tetris — Méthode Agile</h3>
+            <h4 class="project-title">Tetris — Méthode Agile</h4>
             <p class="project-desc">Développement en équipe avec gestion de projet agile. Interface intuitive et documentation technique complète.</p>
             <div class="tags"><span class="tag">Java</span><span class="tag">Agile / Scrum</span><span class="tag">Git</span><span class="tag">Travail en équipe</span></div>
           </div>
@@ -984,7 +1097,7 @@
             <div class="browser-bar"><i class="fas fa-lock" aria-hidden="true"></i>Jeu Labyrinthe</div>
           </div>
           <div class="project-body">
-            <h3 class="project-title">Jeu Labyrinthe</h3>
+            <h4 class="project-title">Jeu Labyrinthe</h4>
             <p class="project-desc">Génération aléatoire de niveaux avec affichage graphique optimisé pour une expérience fluide.</p>
             <div class="tags"><span class="tag">Java</span><span class="tag">Maven</span><span class="tag">Algorithmique avancée</span><span class="tag">Optimisation</span></div>
           </div>
@@ -1004,52 +1117,35 @@
       <div class="skills-grid">
         <div class="skill-row">
           <div class="skill-label">Langages</div>
-          <div class="skill-pills">
-            <span class="skill-pill">TypeScript</span><span class="skill-pill">JavaScript</span>
-            <span class="skill-pill">Java</span><span class="skill-pill">Python</span>
-            <span class="skill-pill">HTML / CSS</span>
-            <span class="skill-pill">C#</span><span class="skill-pill">PHP</span>
-          </div>
+          <div class="skill-pills"><span class="skill-pill">Java</span><span class="skill-pill">TypeScript</span><span class="skill-pill">JavaScript</span><span class="skill-pill">Python</span><span class="skill-pill">SQL</span><span class="skill-pill">WLangage</span><span class="skill-pill">HTML / CSS</span></div>
         </div>
         <div class="skill-row">
-          <div class="skill-label">Frameworks</div>
-          <div class="skill-pills">
-            <span class="skill-pill">Next.js</span>
-            <span class="skill-pill">Node.js</span>
-            <span class="skill-pill">Socket.io</span>
-          </div>
+          <div class="skill-label">Web &amp; API</div>
+          <div class="skill-pills"><span class="skill-pill">Node.js</span><span class="skill-pill">Next.js</span><span class="skill-pill">Socket.io</span><span class="skill-pill">API REST</span><span class="skill-pill">Jakarta Servlet</span></div>
         </div>
         <div class="skill-row">
           <div class="skill-label">Architecture</div>
-          <div class="skill-pills">
-            <span class="skill-pill">API REST</span><span class="skill-pill">Client–serveur</span>
-            <span class="skill-pill">Programmation réseau</span>
-            <span class="skill-pill">POO</span><span class="skill-pill">Pattern DAO</span>
-            <span class="skill-pill">Architecture logicielle</span>
-          </div>
+          <div class="skill-pills"><span class="skill-pill">Client–serveur</span><span class="skill-pill">Programmation réseau</span><span class="skill-pill">POO</span><span class="skill-pill">Pattern DAO</span><span class="skill-pill">Architecture logicielle</span></div>
         </div>
         <div class="skill-row">
           <div class="skill-label">Bases de données</div>
-          <div class="skill-pills">
-            <span class="skill-pill">PostgreSQL</span><span class="skill-pill">JDBC</span>
-            <span class="skill-pill">SQL</span>
-          </div>
+          <div class="skill-pills"><span class="skill-pill">PostgreSQL</span><span class="skill-pill">SQLite</span><span class="skill-pill">HFSQL</span><span class="skill-pill">JDBC</span></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label">IA &amp; automatisation</div>
+          <div class="skill-pills"><span class="skill-pill">Développement assisté par IA (Claude Code)</span><span class="skill-pill">n8n</span></div>
         </div>
         <div class="skill-row">
           <div class="skill-label">Réseaux &amp; Outils</div>
-          <div class="skill-pills">
-            <span class="skill-pill">TCP/IP</span><span class="skill-pill">WebSocket</span>
-            <span class="skill-pill">Connexions FTP</span>
-            <span class="skill-pill">Git</span><span class="skill-pill">Agile / Scrum</span>
-            <span class="skill-pill">Maven</span><span class="skill-pill">Tomcat</span>
-          </div>
+          <div class="skill-pills"><span class="skill-pill">Git</span><span class="skill-pill">GitHub</span><span class="skill-pill">GitLab CI</span><span class="skill-pill">Docker</span><span class="skill-pill">Linux</span><span class="skill-pill">Tomcat</span><span class="skill-pill">Maven</span><span class="skill-pill">Postman</span><span class="skill-pill">Odoo</span><span class="skill-pill">TCP/IP</span><span class="skill-pill">WebSocket</span><span class="skill-pill">Connexions FTP</span><span class="skill-pill">Méthode agile</span></div>
         </div>
         <div class="skill-row">
-          <div class="skill-label">En cours</div>
-          <div class="skill-pills">
-            <span class="skill-pill learning">WLangage (WinDev)</span>
-            <span class="skill-pill learning">HFSQL (WinDev)</span>
-          </div>
+          <div class="skill-label">Langues</div>
+          <div class="skill-pills"><span class="skill-pill">Français, langue maternelle</span><span class="skill-pill">Anglais B1 estimé</span></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label">Notions</div>
+          <div class="skill-pills"><span class="skill-pill learning">Rust</span><span class="skill-pill learning">C</span><span class="skill-pill learning">C#</span><span class="skill-pill learning">PHP</span><span class="skill-pill learning">Bash</span><span class="skill-pill learning">PyTorch</span></div>
         </div>
       </div>
     </section>
@@ -1063,14 +1159,14 @@
       </div>
       <div class="contact-card">
         <div class="contact-heading">Travaillons ensemble.</div>
-        <p class="contact-sub">En recherche d'alternance BUT3 — également ouvert aux projets freelance. N'hésitez pas à me contacter directement.</p>
-        <a href="mailto:calmatthieu@yahoo.com" class="contact-email">
-          <i class="fas fa-envelope" aria-hidden="true"></i> calmatthieu@yahoo.com
+        <p class="contact-sub">En recherche d'un stage de 12 à 16 semaines à partir du 15 mars 2027, partout en France — également ouvert aux projets freelance. N'hésitez pas à me contacter directement.</p>
+        <a href="mailto:matthieucalesse@gmail.com" class="contact-email">
+          <i class="fas fa-envelope" aria-hidden="true"></i> matthieucalesse@gmail.com
         </a>
         <div class="contact-row">
           <a href="https://www.linkedin.com/in/matthieu-calesse/" target="_blank" rel="noopener noreferrer" class="contact-link"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn — Matthieu Calesse</a>
           <a href="https://github.com/cal-Matthieu" target="_blank" rel="noopener noreferrer" class="contact-link"><i class="fab fa-github" aria-hidden="true"></i> github.com/cal-Matthieu</a>
-          <span class="contact-link"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Villeneuve-d'Ascq, 59 · Permis B</span>
+          <span class="contact-link"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Lille · Mobile dans toute la France · Permis B</span>
         </div>
       </div>
     </section>
