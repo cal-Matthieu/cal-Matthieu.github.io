@@ -14,7 +14,8 @@ Bienvenue sur mon portfolio numérique ! Ce site présente mon CV, mes compéten
 
 ## Structure du projet
 - `index.html` : Page d'accueil
-- `alternance.html` : Page dédiée à la recherche d'alternance BUT3
+- `stage.html` : Page dédiée à la recherche de stage de BUT3
+- `alternance.html` : Ancienne adresse, redirigée vers `stage.html`
 - `rapport-stage.html`, `projet-ecodrop.html` : Pages de détail (stage, projet)
 - `style.css` : Styles communs à toutes les pages (variables CSS, sidebar, topbar, footer)
 - `doc/` : Documents supplémentaires (CV, rapports)
